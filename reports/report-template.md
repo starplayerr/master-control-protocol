@@ -1,8 +1,9 @@
-# Initial Report
+# Report: YYYY-MM-DD — Title
 
-First-pass synthesis of the platform, created after sufficient inventorying and analysis. This document acts as the initial assessment once enough repositories and surfaces have been reviewed to form a coherent picture.
+Periodic synthesis report from accumulated audit findings. Copy this template and save as `reports/YYYY-MM-DD-title.md` when producing a new report.
 
-> **Status:** Draft — update this report as audits accumulate.
+> **Status:** Draft
+> **Audits incorporated:** _list repos included in this synthesis_
 
 ## Platform Overview
 

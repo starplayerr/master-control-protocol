@@ -9,7 +9,7 @@ Mermaid diagrams for visual understanding of the platform. These render natively
 | [Dependency Matrix](dependency-matrix.md) | Visual graph of repo-to-repo and repo-to-resource dependencies |
 | [Deployment Flow](deployment-flow.md) | How code moves from repos through CI/CD to production targets |
 | [EKS InfraStack](eks-infra-stack.md) | Architecture of the EKS infrastructure layer |
-| [Workflow: Self-Audit](workflow-self-audit.md) | The process for running a self-audit on a new repo |
+| [Workflow: Audit and Integrate](workflow-self-audit.md) | The two-phase /audit and /integrate workflow |
 
 ## Updating Diagrams
 

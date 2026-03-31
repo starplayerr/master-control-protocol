@@ -1,26 +1,9 @@
-# Audit Template
+# Audit Prompt
 
-Standardized process and Copilot prompt for per-repo self-audits. This is the repeatable mechanism for generating structured repo audits.
-
-## Pre-Audit Checklist
-
-Before running the prompt:
-
-- [ ] Open the target repo in VS Code with GitHub Copilot Agent mode
-- [ ] Check the active branch — is it the prod-deployed branch?
-  - Usually `main` or `master`, but not always
-  - Check for deployment indicators: Spinnaker config, `triggerable.yaml`, CI/CD pipeline files
-  - Note the actual prod branch if it differs from the default branch
-- [ ] Confirm you have the latest code pulled
-- [ ] Add `audit.md` to your global `.gitignore` if you haven't already
-
-## The Prompt
-
-Copy everything between the fences below and paste it into Copilot Chat in Agent mode.
+This is the full prompt used by the `/audit` workflow. The agent reads this file and follows the instructions against the target repository.
 
 ---
 
-````
 You are performing a structured self-audit of this repository. Your goal is to produce a comprehensive Markdown report that captures the identity, purpose, tech stack, deployment, dependencies, configuration, API surface, secrets, and known gaps of this repo.
 
 Inspect the following (where they exist):
@@ -143,29 +126,3 @@ Examples: no README, tests exist but CI does not run them, hard-coded dev accoun
 ---
 
 Save this report as `audit.md` in the repo root. Do not commit or push it.
-````
-
----
-
-## Post-Audit Steps
-
-After the Copilot agent produces the report:
-
-1. **Review critically** — Copilot will get things wrong. Read the output and correct obvious errors.
-2. **Fill unknowns** — Use your own knowledge or ask teammates to resolve `unknown` entries where possible.
-3. **Flag contradictions** — Note anything that conflicts with what other audits or docs claim.
-4. **Copy to Master Control Protocol** — Save as `audits/<repo-name>.md` in this repo.
-5. **Update inventory** — Set audit status to `complete` in [inventory.md](inventory.md).
-6. **Update maps** — If the audit revealed new dependencies, deployment paths, config sources, contradictions, or gaps, update the relevant files in [maps/](maps/).
-
-## Why This Template Works
-
-**Forces branch realism.** It does not assume `main` equals prod. That is a common enterprise failure mode.
-
-**Structured across the right dimensions.** Identity, purpose, tech stack, artifacts, deployment, dependencies, config sources of truth, API surface, secrets, gaps, ownership confidence.
-
-**Uses "unknown" instead of blanks.** Prevents fake certainty. Makes ambiguity visible and trackable.
-
-**Supports local-only first pass.** Having Copilot save `audit.md` locally in the target repo is convenient for review while avoiding pollution of the source repo history.
-
-**Requires human judgment.** The workflow explicitly includes critical reading, error correction, filling unknowns, flagging contradictions, and updating shared maps. This keeps it from becoming low-quality AI sludge.

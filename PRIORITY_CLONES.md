@@ -1,0 +1,31 @@
+# Priority Clones
+
+Audit queue, sequencing, and high-level outcomes. This file tracks which repos should be cloned and audited next, in what order, and what was learned.
+
+In a real deployment backed by a database, this queue can be constructed dynamically from accumulated findings — repos surfaced by dependency analysis, contradiction discovery, or gap identification get promoted automatically. In Markdown form, it is maintained manually as audits accumulate.
+
+## Audit Queue
+
+| # | Repo | Surface | Why Prioritized | Expected Outcome | Status |
+|---|---|---|---|---|---|
+| 1 | _example-eks-cluster_ | EKS | _Foundational infra, high dependency surface_ | _Map cluster-level dependencies and deployment targets_ | `queued` |
+| 2 | _example-sagemaker-pipelines_ | SageMaker | _Core ML workflow, deployment complexity_ | _Clarify training pipeline flow and image dependencies_ | `queued` |
+
+> Replace the italic example rows above with real repos as audit priorities emerge.
+
+**Status values:** `queued` · `in progress` · `audited` · `deferred`
+
+## How to Use
+
+- Add repos when audits, maps, or team conversations reveal they should be examined next.
+- Sequence by expected leverage: repos with high dependency surface, unclear ownership, or known contradictions should go first.
+- After completing an audit via `/integrate`, update the status to `audited` and add an outcome summary below.
+- Re-evaluate sequencing as new findings shift priorities.
+
+## Outcomes
+
+Short summaries of what each completed audit revealed. These help inform future prioritization.
+
+| Repo | Date Audited | Outcome |
+|---|---|---|
+| | | |

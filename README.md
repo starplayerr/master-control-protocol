@@ -29,14 +29,22 @@ It sits in the middle layer between tribal knowledge and overengineered automati
 
 ```
 master-control-protocol/
-├── README.md                 ← You are here
-├── inventory.md              ← Central catalog of repos and audit state
-├── surfaces.md               ← Platform surfaces (functional domains)
-├── initial-report.md         ← First-pass synthesis after inventorying
-├── audit-template.md         ← Standardized self-audit process + Copilot prompt
-├── audits/                   ← Per-repo audit reports
+├── README.md                         ← You are here
+│
+│── Tracking
+├── INVENTORY.md                      ← Full catalog + canonical counts
+├── PRIORITY_CLONES.md                ← Audit queue, sequencing, outcomes
+│
+│── Workflow
+├── .cursor/skills/mcp-workflow/
+│   ├── SKILL.md                      ← /audit and /integrate skill
+│   ├── audit-prompt.md               ← Structured audit prompt
+│   └── post-audit-checklist.md       ← Integration steps
+│
+│── Knowledge
+├── audits/                           ← Stored repo audit reports
 │   └── <repo-name>.md
-├── maps/                     ← Platform synthesis layer across repos
+├── maps/                             ← Platform synthesis layer
 │   ├── dependency-matrix.md
 │   ├── deployment-flow.md
 │   ├── source-of-truth.md
@@ -44,47 +52,44 @@ master-control-protocol/
 │   ├── stale-assumptions.md
 │   ├── missing-docs.md
 │   └── candidate-simplifications.md
-└── diagrams/                 ← Mermaid diagrams for visual understanding
-    ├── dependency-matrix.md
-    ├── deployment-flow.md
-    ├── eks-infra-stack.md
-    └── workflow-self-audit.md
+├── diagrams/                         ← Human-readable visuals
+│   ├── dependency-matrix.md
+│   ├── deployment-flow.md
+│   ├── eks-infra-stack.md
+│   └── workflow-self-audit.md
+└── reports/                          ← Periodic dated synthesis reports
+    └── report-template.md
 ```
 
 ## How It Works
 
+### The Workflow
+
+Master Control Protocol uses a Cursor skill with two commands:
+
+**`/audit`** — Run in a cloned target repo. The agent reads the audit prompt, verifies the prod branch, explores the repository, and produces a structured Markdown report saved as `audit.md` in the repo root.
+
+**`/integrate {repo-name}`** — Run in MCP after reviewing the audit. The agent copies the audit into `audits/`, updates `INVENTORY.md` and `PRIORITY_CLONES.md`, reviews each map for cross-cutting findings, and flags diagrams that may need updating.
+
 ### The Compounding Loop
 
-1. **Audit a repo** — Use the [audit template](audit-template.md) with Copilot Agent mode
-2. **Save findings** — Store the report in `audits/<repo-name>.md`
-3. **Update inventory** — Mark the repo as audited in [inventory.md](inventory.md)
-4. **Update shared maps** — Feed findings into the [maps](maps/)
-5. **Improve platform understanding** — Each audit makes the next one better
+1. **Audit a repo** — Run `/audit` in the target repo
+2. **Review critically** — Correct errors, fill unknowns, flag contradictions
+3. **Integrate findings** — Run `/integrate {repo-name}` in MCP
+4. **Platform understanding improves** — Each audit makes the next one better
 
-### Running a Self-Audit
+### Tracking
 
-1. Open the target repo in VS Code with GitHub Copilot Agent mode.
-2. Check the active branch — verify it represents prod-deployed code (usually `main` or `master`, but not always).
-3. Check deployment indicators (Spinnaker config, `triggerable.yaml`, etc.).
-4. Copy the prompt from [audit-template.md](audit-template.md) into Copilot Chat.
-5. Let Copilot explore the repo and produce the report.
-6. Save the output as `audits/<repo-name>.md` in this repo.
-7. Review critically — correct errors, fill unknowns, flag contradictions.
-8. Update [inventory.md](inventory.md).
-9. Update [maps](maps/) if new dependencies or relationships were found.
+[INVENTORY.md](INVENTORY.md) is the full catalog of known repositories with canonical top-line counts (total repos, audited, coverage).
 
-### Updating Maps
+[PRIORITY_CLONES.md](PRIORITY_CLONES.md) is the audit queue — which repos to audit next, why, and what was learned after each one.
 
-When a new audit reveals findings:
+### Knowledge
 
-1. Review each map
-2. Update dependencies
-3. Update deployment paths
-4. Update source-of-truth assumptions
-5. Update contradictions or ambiguities
-6. Add new missing docs or simplification candidates
-
-Repo audits are not isolated artifacts. They feed into the larger shared model of the platform.
+- **`audits/`** — Stored copies of repo audits for historical traceability
+- **`maps/`** — Cross-cutting findings: dependencies, contradictions, staleness, gaps, simplifications
+- **`diagrams/`** — Human-readable Mermaid visuals
+- **`reports/`** — Periodic dated synthesis reports from accumulated findings
 
 ## What It Is Good For
 
@@ -102,10 +107,11 @@ The original context was a platform spanning EKS, SageMaker, Jupyter, extensions
 
 To adapt for another ecosystem:
 
-1. Define your [surfaces](surfaces.md) (functional domains)
-2. Populate [inventory.md](inventory.md) with your repos
-3. Run self-audits using the [template](audit-template.md)
+1. Populate [INVENTORY.md](INVENTORY.md) with your repos
+2. Run `/audit` against priority repos
+3. Integrate findings with `/integrate`
 4. Build out [maps](maps/) as patterns emerge
 5. Render [diagrams](diagrams/) for visual orientation
+6. Produce periodic [reports](reports/) to synthesize accumulated understanding
 
 The format works for any multi-repo platform where orientation is the bottleneck.

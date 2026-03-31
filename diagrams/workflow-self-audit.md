@@ -1,46 +1,53 @@
-# Workflow: Running a Self-Audit on a New Repo
+# Workflow: Audit and Integrate
 
-Visual rendering of the audit process described in [audit-template.md](../audit-template.md).
+Visual rendering of the two-phase workflow powered by the MCP skill.
+
+## Phase 1: /audit
 
 ```mermaid
 flowchart TD
-    start([Start]) --> open[Open target repo in VS Code]
-    open --> branch{Check active branch}
-    branch -->|Is prod branch| deploy_check[Check deployment indicators]
-    branch -->|Not prod branch| switch[Switch to prod branch]
-    switch --> deploy_check
-
-    deploy_check --> copy[Copy prompt from audit-template.md]
-    copy --> paste[Paste into Copilot Chat — Agent mode]
-    paste --> run[Copilot explores repo and generates report]
-    run --> save_local[Copilot saves audit.md in repo root]
-
-    save_local --> review{Human review}
-    review --> correct[Correct obvious errors]
-    correct --> fill[Fill in unknowns where possible]
+    start([Clone target repo]) --> open[Open repo in Cursor]
+    open --> audit[Run /audit]
+    audit --> branch[Agent verifies prod branch]
+    branch --> explore[Agent explores repo structure]
+    explore --> generate[Agent produces structured report]
+    generate --> save[audit.md saved in repo root]
+    save --> review{Human review}
+    review --> correct[Correct errors]
+    correct --> fill[Fill unknowns]
     fill --> flag[Flag contradictions]
+    flag --> ready([Ready to integrate])
+```
 
-    flag --> copy_mcp[Copy to audits/repo-name.md in MCP]
-    copy_mcp --> update_inv[Update inventory.md audit status]
-    update_inv --> cross{New map-level findings?}
+## Phase 2: /integrate {repo-name}
 
-    cross -->|Yes| update_dep[Update dependency matrix]
-    update_dep --> update_deploy[Update deployment flow]
-    update_deploy --> update_sot[Update source of truth]
-    update_sot --> update_contra[Update contradictions]
-    update_contra --> update_other[Update other maps as needed]
-    update_other --> done([Done])
+```mermaid
+flowchart TD
+    start([Run /integrate in MCP]) --> copy[Copy audit to audits/repo-name.md]
+    copy --> inv[Update INVENTORY.md]
+    inv --> prio[Update PRIORITY_CLONES.md]
+    prio --> maps{Cross-cutting findings?}
 
-    cross -->|No| done
+    maps -->|Yes| dep[Update dependency matrix]
+    dep --> deploy[Update deployment flow]
+    deploy --> sot[Update source of truth]
+    sot --> contra[Update contradictions]
+    contra --> stale[Update stale assumptions]
+    stale --> docs[Update missing docs]
+    docs --> simp[Update candidate simplifications]
+    simp --> diagrams[Flag diagram updates]
+    diagrams --> done([Done])
+
+    maps -->|No| done
 ```
 
 ## The Compounding Loop
 
 ```mermaid
 flowchart LR
-    audit[Audit Repo] --> save[Save Findings]
-    save --> inventory[Update Inventory]
-    inventory --> maps[Update Shared Maps]
+    audit["/audit"] --> review[Human Review]
+    review --> integrate["/integrate"]
+    integrate --> maps[Maps Updated]
     maps --> understanding[Platform Understanding Improves]
     understanding -->|Next audit is better| audit
 ```
