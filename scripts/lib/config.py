@@ -18,6 +18,8 @@ AUDIT_STATE_PATH = MCP_ROOT / "audit-state.json"
 DISCOVERED_PATH = MCP_ROOT / "discovered.json"
 MAPS_DIR = MCP_ROOT / "maps"
 MAPS_DATA_DIR = MCP_ROOT / "maps" / "data"
+FACTS_CACHE_DIR = MCP_ROOT / "facts-cache"
+DIAGRAMS_DIR = MCP_ROOT / "diagrams"
 
 # ── Secrets ────────────────────────────────────────────────────────────────
 

@@ -1,4 +1,44 @@
 {
   "schema_version": "1.0",
-  "items": []
+  "items": [
+    {
+      "category": "dead-reference",
+      "assumption": "ruff claims 'ruff-action' depends on it",
+      "reality": "No audit exists for 'ruff-action' \u2014 cannot verify this consumer",
+      "repos": [
+        "ruff"
+      ],
+      "confidence": "needs-verification",
+      "status": "active",
+      "source": "audits/ruff.md",
+      "id": "S-001",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "dead-reference",
+      "assumption": "setup-uv config references 'astral-sh/versions'",
+      "reality": "No audit exists for 'versions'",
+      "repos": [
+        "setup-uv"
+      ],
+      "confidence": "needs-verification",
+      "status": "active",
+      "source": "audits/setup-uv.md",
+      "id": "S-002",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "deprecated-pattern",
+      "assumption": "ruff-vscode uses or references a deprecated pattern",
+      "reality": "ruff-lsp is deprecated in favour of Ruff's native language server",
+      "repos": [
+        "ruff-vscode"
+      ],
+      "confidence": "high",
+      "status": "active",
+      "source": "audits/ruff-vscode.md",
+      "id": "S-003",
+      "detected_date": "2026-03-31"
+    }
+  ]
 }

@@ -7,8 +7,17 @@
       "type": "library",
       "direction": "consumed-by",
       "confidence": "verified",
-      "source_audit": "audits/ruff.md",
-      "notes": "ruff-pre-commit wraps ruff as a pre-commit hook; pins to specific ruff version"
+      "source_audit": "audits/ruff-pre-commit.md",
+      "notes": "ruff-pre-commit depends on ruff==0.15.8 (Pinned to specific version)"
+    },
+    {
+      "from": "uv",
+      "to": "ruff-pre-commit",
+      "type": "build-tool",
+      "direction": "consumed-by",
+      "confidence": "verified",
+      "source_audit": "audits/ruff-pre-commit.md",
+      "notes": "ruff-pre-commit depends on uv (For Python package management)"
     },
     {
       "from": "ruff",
@@ -16,8 +25,17 @@
       "type": "library",
       "direction": "consumed-by",
       "confidence": "verified",
-      "source_audit": "audits/ruff.md",
-      "notes": "ruff-vscode bundles ruff binary for VS Code editor integration"
+      "source_audit": "audits/ruff-vscode.md",
+      "notes": "ruff-vscode depends on ruff==0.15.7 (Bundled Ruff binary)"
+    },
+    {
+      "from": "setup-uv",
+      "to": "uv",
+      "type": "library",
+      "direction": "consumed-by",
+      "confidence": "verified",
+      "source_audit": "audits/setup-uv.md",
+      "notes": "uv consumes setup-uv (Workflows that need uv installation)"
     },
     {
       "from": "ruff",
@@ -27,15 +45,6 @@
       "confidence": "verified",
       "source_audit": "audits/ruff.md",
       "notes": "GitHub Action for CI integration; ruff-action not yet audited"
-    },
-    {
-      "from": "uv",
-      "to": "ruff-pre-commit",
-      "type": "build-tool",
-      "direction": "consumed-by",
-      "confidence": "verified",
-      "source_audit": "audits/ruff-pre-commit.md",
-      "notes": "ruff-pre-commit uses uv as its build tool"
     },
     {
       "from": "uv",

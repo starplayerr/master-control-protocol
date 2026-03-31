@@ -1,12 +1,12 @@
 ---
-title: "Candidate Simplifications"
-role: map
-last_updated: 2026-03-31
 depends_on:
-  - INVENTORY.md
-  - audits/*
-freshness: draft
+- INVENTORY.md
+- audits/*
+freshness: current
+last_updated: '2026-03-31'
+role: map
 scope: platform
+title: Candidate Simplifications
 ---
 
 # Candidate Simplifications
@@ -44,7 +44,13 @@ This file turns platform understanding into platform improvement.
 
 | ID | Description | Type | Repos Involved | Tier | Impact | Status | Source |
 |---|---|---|---|---|---|---|---|
-| X-001 | | | | 1 · 2 · 3 | high · medium · low | proposed · approved · in progress · done | |
+| SIM-001 | Config 'pyproject.toml' referenced in 3 repos | config-sprawl | python-build-standalone, ruff, ruff-pre-commit | 1 | medium | proposed | synthesize/simplifications |
+| SIM-002 | 4 repos share CI/CD pattern: github actions/github actions | pipeline-redundancy | python-build-standalone, ruff-pre-commit, ruff-vscode, setup-uv | 2 | medium | proposed | synthesize/simplifications |
+| SIM-003 | ruff-pre-commit is a thin wrapper around ruff | consolidation-candidate | ruff, ruff-pre-commit | 2 | low | proposed | synthesize/simplifications |
+| SIM-004 | ruff and uv have overlapping purposes | duplicate-functionality | ruff, uv | 3 | medium | proposed | synthesize/simplifications |
+| SIM-005 | Python repos use different build tools | library-fragmentation | python-build-standalone, ruff, ruff-pre-commit, ruff-vscode, uv | 3 | low | proposed | synthesize/simplifications |
+| SIM-006 | Rust repos use different build tools | library-fragmentation | python-build-standalone, ruff, uv | 3 | low | proposed | synthesize/simplifications |
+| SIM-007 | Typescript repos use different build tools | library-fragmentation | ruff, ruff-vscode, setup-uv | 3 | low | proposed | synthesize/simplifications |
 
 **Type values:** `duplication` · `dead code` · `unnecessary coupling` · `over-abstraction` · `consolidation` · `deprecation candidate` · `deployment simplification` · `config reduction` · `ownership clarification` · `other`
 

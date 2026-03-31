@@ -1,4 +1,118 @@
 {
   "schema_version": "1.0",
-  "candidates": []
+  "candidates": [
+    {
+      "category": "config-sprawl",
+      "title": "Config 'pyproject.toml' referenced in 3 repos",
+      "description": "The config source/key 'pyproject.toml' appears in 3 repos (python-build-standalone, ruff, ruff-pre-commit). Consider centralising this configuration to reduce duplication and drift risk.",
+      "repos": [
+        "python-build-standalone",
+        "ruff",
+        "ruff-pre-commit"
+      ],
+      "effort": "low",
+      "risk": "low",
+      "impact": "medium",
+      "tier": "quick-win",
+      "id": "SIM-001",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "pipeline-redundancy",
+      "title": "4 repos share CI/CD pattern: github actions/github actions",
+      "description": "Repos python-build-standalone, ruff-pre-commit, ruff-vscode, setup-uv all use github actions for CI and github actions for CD. Consider a shared workflow template or reusable action to reduce maintenance overhead.",
+      "repos": [
+        "python-build-standalone",
+        "ruff-pre-commit",
+        "ruff-vscode",
+        "setup-uv"
+      ],
+      "effort": "medium",
+      "risk": "low",
+      "impact": "medium",
+      "tier": "medium-effort",
+      "id": "SIM-002",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "consolidation-candidate",
+      "title": "ruff-pre-commit is a thin wrapper around ruff",
+      "description": "ruff-pre-commit has 2 outbound deps, 1 of which point to ruff. Purpose: 'Pre-commit hook wrapper for Ruff linter/formatter'. Could potentially be consolidated into ruff or maintained as a minimal adapter.",
+      "repos": [
+        "ruff",
+        "ruff-pre-commit"
+      ],
+      "effort": "medium",
+      "risk": "low",
+      "impact": "low",
+      "tier": "medium-effort",
+      "id": "SIM-003",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "duplicate-functionality",
+      "title": "ruff and uv have overlapping purposes",
+      "description": "Purpose overlap: 57%. 'An extremely fast Python linter and code formatter, written in Rust' vs 'An extremely fast Python package and project manager, written in Rust'. Language overlap: 50%.",
+      "repos": [
+        "ruff",
+        "uv"
+      ],
+      "effort": "high",
+      "risk": "high",
+      "impact": "medium",
+      "tier": "major-structural",
+      "id": "SIM-004",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "library-fragmentation",
+      "title": "Python repos use different build tools",
+      "description": "Build tool fragmentation for python: cargo (python-build-standalone, ruff, uv), docker (python-build-standalone), makefiles (python-build-standalone), maturin (ruff, uv), npm (ruff-vscode, ruff), uv (python-build-standalone, ruff-pre-commit), vsce (ruff-vscode), wasm-pack (ruff), webpack (ruff-vscode)",
+      "repos": [
+        "python-build-standalone",
+        "ruff",
+        "ruff-pre-commit",
+        "ruff-vscode",
+        "uv"
+      ],
+      "effort": "high",
+      "risk": "medium",
+      "impact": "low",
+      "tier": "major-structural",
+      "id": "SIM-005",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "library-fragmentation",
+      "title": "Rust repos use different build tools",
+      "description": "Build tool fragmentation for rust: cargo (python-build-standalone, ruff, uv), docker (python-build-standalone), makefiles (python-build-standalone), maturin (ruff, uv), npm (ruff), uv (python-build-standalone), wasm-pack (ruff)",
+      "repos": [
+        "python-build-standalone",
+        "ruff",
+        "uv"
+      ],
+      "effort": "high",
+      "risk": "medium",
+      "impact": "low",
+      "tier": "major-structural",
+      "id": "SIM-006",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "library-fragmentation",
+      "title": "Typescript repos use different build tools",
+      "description": "Build tool fragmentation for typescript: @vercel/ncc (setup-uv), cargo (ruff), esbuild (setup-uv), maturin (ruff), npm (ruff-vscode, ruff, setup-uv), vsce (ruff-vscode), wasm-pack (ruff), webpack (ruff-vscode)",
+      "repos": [
+        "ruff",
+        "ruff-vscode",
+        "setup-uv"
+      ],
+      "effort": "high",
+      "risk": "medium",
+      "impact": "low",
+      "tier": "major-structural",
+      "id": "SIM-007",
+      "detected_date": "2026-03-31"
+    }
+  ]
 }
