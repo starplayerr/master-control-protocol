@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "pipelines": [
+    {
+      "repo": "ruff",
+      "trigger": "release",
+      "ci": "github-actions",
+      "cd": "cargo-dist",
+      "targets": ["pypi", "npm", "github-releases", "docker-registry"],
+      "pipeline_files": [".github/workflows/release.yml", ".github/workflows/build-*.yml"],
+      "rollback": "unknown",
+      "confidence": "verified",
+      "source_audit": "audits/ruff.md"
+    },
+    {
+      "repo": "ruff-pre-commit",
+      "trigger": "repository-dispatch-from-ruff-release",
+      "ci": "github-actions",
+      "cd": "github-actions",
+      "targets": ["github-repository"],
+      "pipeline_files": [".github/workflows/main.yml"],
+      "rollback": "unknown",
+      "confidence": "verified",
+      "source_audit": "audits/ruff-pre-commit.md"
+    },
+    {
+      "repo": "ruff-vscode",
+      "trigger": "release",
+      "ci": "github-actions",
+      "cd": "github-actions",
+      "targets": ["vscode-marketplace", "openvsx-registry"],
+      "pipeline_files": [".github/workflows/ci.yaml", ".github/workflows/release.yaml"],
+      "rollback": "unknown",
+      "confidence": "verified",
+      "source_audit": "audits/ruff-vscode.md"
+    },
+    {
+      "repo": "uv",
+      "trigger": "release",
+      "ci": "github-actions",
+      "cd": "cargo-dist",
+      "targets": ["pypi", "github-releases", "crates-io", "ghcr"],
+      "pipeline_files": [".github/workflows/release.yml", "build-release-binaries.yml"],
+      "rollback": "unknown",
+      "confidence": "verified",
+      "source_audit": "audits/uv.md"
+    },
+    {
+      "repo": "setup-uv",
+      "trigger": "release",
+      "ci": "github-actions",
+      "cd": "github-actions",
+      "targets": ["github-actions-marketplace"],
+      "pipeline_files": [".github/workflows/test.yml", ".github/workflows/release-drafter.yml"],
+      "rollback": "unknown",
+      "confidence": "verified",
+      "source_audit": "audits/setup-uv.md"
+    },
+    {
+      "repo": "python-build-standalone",
+      "trigger": "release",
+      "ci": "github-actions",
+      "cd": "github-actions",
+      "targets": ["pypi", "github-releases", "ghcr"],
+      "pipeline_files": [".github/workflows/linux.yml", ".github/workflows/macos.yml", ".github/workflows/windows.yml", ".github/workflows/release.yml"],
+      "rollback": "unknown",
+      "confidence": "verified",
+      "source_audit": "audits/python-build-standalone.md"
+    }
+  ]
+}

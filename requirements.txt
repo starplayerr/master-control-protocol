@@ -5,3 +5,4 @@ click
 python-dotenv
 python-frontmatter
 tiktoken
+mcp

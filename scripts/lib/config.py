@@ -16,6 +16,8 @@ INVENTORY_PATH = MCP_ROOT / "INVENTORY.md"
 PRIORITY_CLONES_PATH = MCP_ROOT / "PRIORITY_CLONES.md"
 AUDIT_STATE_PATH = MCP_ROOT / "audit-state.json"
 DISCOVERED_PATH = MCP_ROOT / "discovered.json"
+MAPS_DIR = MCP_ROOT / "maps"
+MAPS_DATA_DIR = MCP_ROOT / "maps" / "data"
 
 # ── Secrets ────────────────────────────────────────────────────────────────
 
