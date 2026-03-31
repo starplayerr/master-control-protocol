@@ -41,6 +41,20 @@ master-control-protocol/
 │   ├── audit-prompt.md               ← Structured audit prompt
 │   └── post-audit-checklist.md       ← Integration steps
 │
+│── Automation
+├── scripts/                          ← Automated audit pipeline
+│   ├── discover.py                   ← GitHub org repo discovery
+│   ├── audit.py                      ← Single-repo audit runner
+│   ├── run_all.py                    ← Full pipeline orchestrator
+│   └── lib/                          ← Shared library modules
+├── prompts/                          ← Repo-type-specific audit prompts
+│   ├── default.md
+│   ├── infrastructure.md
+│   ├── library.md
+│   ├── service.md
+│   └── frontend.md
+├── audit-state.json                  ← Cache: tracks audit staleness
+│
 │── Knowledge
 ├── audits/                           ← Stored repo audit reports
 │   └── <repo-name>.md
@@ -90,6 +104,18 @@ Master Control Protocol uses a Cursor skill with two commands:
 - **`maps/`** — Cross-cutting findings: dependencies, contradictions, staleness, gaps, simplifications
 - **`diagrams/`** — Human-readable Mermaid visuals
 - **`reports/`** — Periodic dated synthesis reports from accumulated findings
+
+### Automated Pipeline
+
+For bulk auditing, MCP includes a Python-based pipeline that replaces the manual loop entirely:
+
+```bash
+pip install -r requirements.txt
+# Set GITHUB_TOKEN and ANTHROPIC_API_KEY in .env
+python scripts/run_all.py --org <your-github-org>
+```
+
+This discovers all repos in the org, checks which need auditing, runs audits in parallel via the LLM, and updates `INVENTORY.md` automatically. Prompts are auto-selected based on repo type (infrastructure, service, library, frontend) or overridden manually. See [scripts/README.md](scripts/README.md) for full usage.
 
 ## What It Is Good For
 
