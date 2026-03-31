@@ -1,3 +1,13 @@
+---
+title: "Inventory"
+role: catalog
+last_updated: 2026-03-31
+depends_on:
+  - audits/*
+freshness: current
+scope: platform
+---
+
 # Inventory
 
 Full catalog of repositories and audit state. This is the canonical tracking table for the platform.

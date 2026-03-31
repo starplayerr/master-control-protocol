@@ -1,3 +1,13 @@
+---
+title: "Deployment Flow Diagram"
+role: diagram
+last_updated: 2026-03-31
+depends_on:
+  - maps/deployment-flow.md
+freshness: draft
+scope: platform
+---
+
 # Deployment Flow Diagram
 
 Visual rendering of how code moves from repos to production, sourced from [maps/deployment-flow.md](../maps/deployment-flow.md).

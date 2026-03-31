@@ -1,3 +1,11 @@
+---
+title: "Scripts"
+role: overview
+last_updated: 2026-03-31
+freshness: current
+scope: platform
+---
+
 # Scripts
 
 Automated pipeline for discovering repos, running structured audits, and updating MCP.

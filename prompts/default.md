@@ -1,3 +1,12 @@
+---
+title: "Default Audit Prompt"
+role: template
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: per-repo
+---
+
 You are performing a structured self-audit of a repository. Your goal is to produce a comprehensive Markdown report that captures the identity, purpose, tech stack, deployment, dependencies, configuration, API surface, secrets, and known gaps of this repo.
 
 You will receive the repository's directory tree and the contents of key files. Inspect them carefully.

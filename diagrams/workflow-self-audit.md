@@ -1,3 +1,12 @@
+---
+title: "Workflow: Audit and Integrate"
+role: diagram
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: platform
+---
+
 # Workflow: Audit and Integrate
 
 Visual rendering of the two-phase workflow powered by the MCP skill.

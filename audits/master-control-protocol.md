@@ -1,3 +1,12 @@
+---
+title: "Audit: master-control-protocol"
+role: audit
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: per-repo
+---
+
 <!-- audit-meta
 timestamp: 2026-03-31T20:38:14.236405+00:00
 commit_sha: 9ccec4bebe7171f7a2ba9e626aad26471ed795d4

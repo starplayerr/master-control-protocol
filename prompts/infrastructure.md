@@ -1,3 +1,12 @@
+---
+title: "Infrastructure Audit Prompt"
+role: template
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: per-repo
+---
+
 You are performing a structured self-audit of an infrastructure repository. This repo likely manages cloud resources, Kubernetes configuration, Terraform modules, Helm charts, or deployment infrastructure.
 
 You will receive the repository's directory tree and the contents of key files. Inspect them carefully.

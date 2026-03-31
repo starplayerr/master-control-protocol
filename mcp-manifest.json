@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "read_order": [
+    { "path": "README.md", "role": "overview", "priority": 1 },
+    { "path": "INVENTORY.md", "role": "catalog", "priority": 2 },
+    { "path": "PRIORITY_CLONES.md", "role": "queue", "priority": 3 },
+    { "path": "maps/source-of-truth.md", "role": "map", "priority": 4 },
+    { "path": "maps/dependency-matrix.md", "role": "map", "priority": 4 },
+    { "path": "maps/deployment-flow.md", "role": "map", "priority": 4 },
+    { "path": "maps/contradictions-and-ambiguities.md", "role": "map", "priority": 5 },
+    { "path": "maps/stale-assumptions.md", "role": "map", "priority": 5 },
+    { "path": "maps/candidate-simplifications.md", "role": "map", "priority": 6 },
+    { "path": "maps/missing-docs.md", "role": "map", "priority": 6 }
+  ],
+  "audit_index": "audit-state.json",
+  "audits_dir": "audits/",
+  "diagrams_dir": "diagrams/",
+  "prompts_dir": "prompts/",
+  "reports_dir": "reports/"
+}

@@ -1,3 +1,12 @@
+---
+title: "Library Audit Prompt"
+role: template
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: per-repo
+---
+
 You are performing a structured self-audit of a library or package repository. This repo likely publishes a reusable package consumed by other repos or services.
 
 You will receive the repository's directory tree and the contents of key files. Inspect them carefully.

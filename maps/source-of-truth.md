@@ -1,3 +1,14 @@
+---
+title: "Source of Truth"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Source of Truth
 
 For each configurable dimension, where does the canonical value actually live?

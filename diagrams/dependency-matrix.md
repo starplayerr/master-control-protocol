@@ -1,3 +1,13 @@
+---
+title: "Dependency Matrix Diagram"
+role: diagram
+last_updated: 2026-03-31
+depends_on:
+  - maps/dependency-matrix.md
+freshness: draft
+scope: platform
+---
+
 # Dependency Matrix Diagram
 
 Visual rendering of the dependency relationships from [maps/dependency-matrix.md](../maps/dependency-matrix.md).

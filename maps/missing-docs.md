@@ -1,3 +1,14 @@
+---
+title: "Missing Docs"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Missing Docs
 
 Documentation gaps across the ecosystem. The goal is to make documentation debt visible and prioritize what is most painful to fix.

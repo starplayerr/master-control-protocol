@@ -1,3 +1,14 @@
+---
+title: "Contradictions and Ambiguities"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Contradictions and Ambiguities
 
 Conflicting information across repos, documentation, deployment config, and team understanding.

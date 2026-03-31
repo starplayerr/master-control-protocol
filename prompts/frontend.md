@@ -1,3 +1,12 @@
+---
+title: "Frontend Audit Prompt"
+role: template
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: per-repo
+---
+
 You are performing a structured self-audit of a frontend repository. This repo likely builds a web application, UI component library, or client-side bundle.
 
 You will receive the repository's directory tree and the contents of key files. Inspect them carefully.
