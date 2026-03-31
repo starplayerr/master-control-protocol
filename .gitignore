@@ -11,3 +11,13 @@ Thumbs.db
 
 # Local audit artifacts (never commit these to source repos)
 audit.md
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Ephemeral outputs
+discovered.json

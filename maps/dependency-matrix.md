@@ -1,3 +1,14 @@
+---
+title: "Dependency Matrix"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Dependency Matrix
 
 How repos produce and consume each other's outputs. This maps the ecosystem in terms of artifact flow, not just repo ownership. The goal is to show what each repo produces, who consumes it, and what kind of dependency exists between them.

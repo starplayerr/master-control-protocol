@@ -1,3 +1,13 @@
+---
+title: "Priority Clones"
+role: queue
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+freshness: current
+scope: platform
+---
+
 # Priority Clones
 
 Audit queue, sequencing, and high-level outcomes. This file tracks which repos should be cloned and audited next, in what order, and what was learned.

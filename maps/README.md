@@ -1,3 +1,11 @@
+---
+title: "Maps"
+role: overview
+last_updated: 2026-03-31
+freshness: current
+scope: platform
+---
+
 # Maps
 
 The maps directory is the platform synthesis layer: the place where individual repo audits become shared architectural understanding.

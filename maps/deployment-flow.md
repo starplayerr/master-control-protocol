@@ -1,3 +1,14 @@
+---
+title: "Deployment Flow"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Deployment Flow
 
 How a code change propagates from Git push to production for each major platform surface.

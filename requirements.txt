@@ -1,0 +1,7 @@
+PyGithub
+anthropic
+openai
+click
+python-dotenv
+python-frontmatter
+tiktoken

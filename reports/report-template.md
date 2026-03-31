@@ -1,3 +1,12 @@
+---
+title: "Report Template"
+role: template
+last_updated: 2026-03-31
+depends_on: []
+freshness: current
+scope: platform
+---
+
 # Report: YYYY-MM-DD — Title
 
 Periodic synthesis report from accumulated audit findings. Copy this template and save as `reports/YYYY-MM-DD-title.md` when producing a new report.

@@ -1,3 +1,13 @@
+---
+title: "EKS InfraStack Diagram"
+role: diagram
+last_updated: 2026-03-31
+depends_on:
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # EKS InfraStack Diagram
 
 Architecture of the EKS infrastructure layer and its relationships.

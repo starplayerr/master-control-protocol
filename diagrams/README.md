@@ -1,3 +1,11 @@
+---
+title: "Diagrams"
+role: overview
+last_updated: 2026-03-31
+freshness: current
+scope: platform
+---
+
 # Diagrams
 
 Mermaid diagrams for visual understanding of the platform. These render natively in GitHub, VS Code, and most Markdown viewers.

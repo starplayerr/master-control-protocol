@@ -1,3 +1,14 @@
+---
+title: "Candidate Simplifications"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Candidate Simplifications
 
 Concrete opportunities to reduce complexity across the platform. The point is not just to describe the current system, but to identify practical ways to improve it.

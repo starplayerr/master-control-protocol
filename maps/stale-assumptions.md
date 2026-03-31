@@ -1,3 +1,14 @@
+---
+title: "Stale Assumptions"
+role: map
+last_updated: 2026-03-31
+depends_on:
+  - INVENTORY.md
+  - audits/*
+freshness: draft
+scope: platform
+---
+
 # Stale Assumptions
 
 Items across the repo ecosystem that appear outdated, abandoned, deprecated, or based on assumptions that may no longer hold. Sorted by risk level so cleanup and verification can be prioritized.
