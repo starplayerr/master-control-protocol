@@ -6,10 +6,10 @@ Full catalog of repositories and audit state. This is the canonical tracking tab
 
 | Metric | Value |
 |---|---|
-| Total repos | 0 |
-| Audited | 0 |
-| Coverage | — |
-| Last updated | — |
+| Total repos | 4 |
+| Audited | 1 |
+| Coverage | 25% |
+| Last updated | 2026-03-31 |
 
 ## How to Use
 
@@ -37,5 +37,6 @@ Full catalog of repositories and audit state. This is the canonical tracking tab
 | _example-eks-cluster_ | EKS | _Main EKS cluster definitions_ | _platform-team_ | _Terraform, Go_ | _active_ | _not started_ | — |
 | _example-sagemaker-pipelines_ | SageMaker | _ML training pipeline orchestration_ | _ml-team_ | _Python_ | _active_ | _not started_ | — |
 | _example-jupyter-extension_ | Jupyter | _Custom Jupyter notebook extension_ | _tools-team_ | _TypeScript_ | _active_ | _not started_ | — |
+| master-control-protocol | — | A documentation-first platform audit hub for mapping, auditing, and reasoning about multi-repo technical ecosystems | unknown | Markdown | unknown | complete | — |
 
 > Replace the italic example rows above with real repos as you begin inventorying.

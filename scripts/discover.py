@@ -52,9 +52,10 @@ def _enumerate_repos(
         # Language breakdown (percentages)
         try:
             languages = repo.get_languages()
-            total_bytes = sum(languages.values()) or 1
-            lang_pct = {lang: round(b / total_bytes * 100) for lang, b in languages.items()}
-        except GithubException:
+            byte_counts = {k: v for k, v in languages.items() if isinstance(v, (int, float))}
+            total_bytes = sum(byte_counts.values()) or 1
+            lang_pct = {lang: round(b / total_bytes * 100) for lang, b in byte_counts.items()}
+        except (GithubException, TypeError):
             lang_pct = {}
 
         repos.append({
