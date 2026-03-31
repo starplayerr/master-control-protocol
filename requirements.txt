@@ -1,0 +1,5 @@
+PyGithub
+anthropic
+openai
+click
+python-dotenv
