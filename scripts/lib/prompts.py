@@ -28,12 +28,17 @@ def detect_repo_type(repo_path: Path) -> str:
     has_helm = (repo_path / "Chart.yaml").is_file() or (repo_path / "chart.yaml").is_file()
     has_kustomize = (repo_path / "kustomization.yaml").is_file()
     has_dockerfile = (repo_path / "Dockerfile").is_file()
+    has_cargo_toml = (repo_path / "Cargo.toml").is_file()
     pkg_json = repo_path / "package.json"
     has_pkg_json = pkg_json.is_file()
 
     # Infrastructure: Terraform, Helm, or Kustomize
     if has_tf or has_helm or has_kustomize:
         return "infrastructure"
+
+    # Rust: Cargo.toml present — CLI tool or library, never "service"
+    if has_cargo_toml:
+        return "library"
 
     # Frontend: package.json with a UI framework dependency
     if has_pkg_json:

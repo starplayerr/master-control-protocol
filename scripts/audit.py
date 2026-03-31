@@ -18,6 +18,20 @@ from lib.llm import LLMClient
 from lib.prompts import select_prompt
 
 
+def _build_frontmatter(repo_name: str, timestamp: str) -> str:
+    date_str = timestamp[:10]
+    return (
+        f"---\n"
+        f'title: "Audit: {repo_name}"\n'
+        f"role: audit\n"
+        f"last_updated: {date_str}\n"
+        f"depends_on: []\n"
+        f"freshness: current\n"
+        f"scope: per-repo\n"
+        f"---\n\n"
+    )
+
+
 def _build_metadata_comment(
     timestamp: str,
     commit_sha: str,
@@ -95,6 +109,7 @@ def run_audit(
 
         # Build output
         timestamp = datetime.now(timezone.utc).isoformat()
+        front = _build_frontmatter(repo_name, timestamp)
         metadata = _build_metadata_comment(
             timestamp=timestamp,
             commit_sha=head_sha,
@@ -107,7 +122,7 @@ def run_audit(
 
         output_path = config.AUDITS_DIR / f"{repo_name}.md"
         config.AUDITS_DIR.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(metadata + report)
+        output_path.write_text(front + metadata + report)
         click.echo(f"  Saved: {output_path}")
 
         # Update cache

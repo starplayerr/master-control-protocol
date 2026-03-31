@@ -63,7 +63,8 @@ BINARY_EXTENSIONS = {
 CONFIG_FILES = [
     "README.md", "README", "readme.md",
     "package.json", "pyproject.toml", "requirements.txt", "setup.py", "setup.cfg",
-    "go.mod", "Cargo.toml", "Gemfile", "build.gradle", "pom.xml",
+    "go.mod", "Cargo.toml", "rust-toolchain.toml", "dist-workspace.toml",
+    "Gemfile", "build.gradle", "pom.xml",
     "Dockerfile", "docker-compose.yml", "docker-compose.yaml",
     "Makefile",
     "Jenkinsfile",
@@ -89,4 +90,5 @@ ENTRY_POINT_PATTERNS = [
     "app.py", "main.py", "manage.py", "wsgi.py",
     "index.ts", "index.js", "src/index.ts", "src/index.js",
     "src/main.rs", "src/lib.rs",
+    "crates/*/Cargo.toml", "crates/*/src/lib.rs", "crates/*/src/main.rs",
 ]
