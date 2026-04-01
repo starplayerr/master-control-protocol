@@ -19,7 +19,7 @@ Full catalog of repositories and audit state. This is the canonical tracking tab
 | Total repos | 10 |
 | Audited | 7 |
 | Coverage | 70% |
-| Last updated | 2026-03-31 |
+| Last updated | 2026-04-01 |
 
 ## How to Use
 
@@ -52,7 +52,7 @@ Full catalog of repositories and audit state. This is the canonical tracking tab
 | uv | — | An extremely fast Python package and project manager, written in Rust | Astral Software Inc. | Rust, Python | active | complete | — |
 | python-build-standalone | — | Produces standalone, highly-redistributable builds of Python | Gregory Szorc <gregory.szorc@gmail.com> | Python, Rust, Shell | active | complete | — |
 | setup-uv | — | GitHub Action to install and configure uv (Python package manager) in CI workflows | @eifinger (from package.json), astral-sh org | TypeScript | active | complete | — |
-| ruff | — | An extremely fast Python linter and code formatter, written in Rust | Astral Software Inc. | Rust, Python, TypeScript, JavaScript | active | complete | — |
+| ruff | — | An extremely fast Python linter and code formatter, written in Rust | Astral Software Inc. | Rust, Python, JavaScript/TypeScript | active | complete | — |
 | ruff-vscode | — | Visual Studio Code extension for Ruff Python linter and formatter | astral-sh | TypeScript, Python | active | complete | — |
 
 > Replace the italic example rows above with real repos as you begin inventorying.
