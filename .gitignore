@@ -15,13 +15,14 @@ audit.md
 # Python
 __pycache__/
 *.pyc
+.venv/
 
 # Environment
 .env
 
-# Ephemeral outputs
-discovered.json
-facts-cache/
+# Ephemeral outputs (root only — examples/ versions are tracked)
+/discovered.json
+/facts-cache/
 
 # Git history analysis clones
 .clones/

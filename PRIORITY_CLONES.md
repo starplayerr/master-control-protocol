@@ -4,7 +4,7 @@ role: queue
 last_updated: 2026-03-31
 depends_on:
   - INVENTORY.md
-freshness: current
+freshness: draft
 scope: platform
 ---
 
@@ -18,10 +18,7 @@ In a real deployment backed by a database, this queue can be constructed dynamic
 
 | # | Repo | Surface | Why Prioritized | Expected Outcome | Status |
 |---|---|---|---|---|---|
-| 1 | _example-eks-cluster_ | EKS | _Foundational infra, high dependency surface_ | _Map cluster-level dependencies and deployment targets_ | `queued` |
-| 2 | _example-sagemaker-pipelines_ | SageMaker | _Core ML workflow, deployment complexity_ | _Clarify training pipeline flow and image dependencies_ | `queued` |
-
-> Replace the italic example rows above with real repos as audit priorities emerge.
+| | | | | | |
 
 **Status values:** `queued` · `in progress` · `audited` · `deferred`
 

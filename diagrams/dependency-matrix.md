@@ -4,7 +4,7 @@ role: diagram
 last_updated: 2026-03-31
 depends_on:
   - maps/data/dependency-matrix.json
-freshness: current
+freshness: draft
 scope: platform
 ---
 
@@ -12,24 +12,17 @@ scope: platform
 
 ```mermaid
 flowchart TD
-    python_build_standalone["python-build-standalone"]
-    ruff["ruff"]
-    ruff_action["ruff-action"]
-    ruff_pre_commit["ruff-pre-commit"]
-    ruff_vscode["ruff-vscode"]
-    setup_uv["setup-uv"]
-    uv["uv"]
-    ruff -->|"library"| ruff_pre_commit
-    uv -->|"build-tool"| ruff_pre_commit
-    ruff -->|"library"| ruff_vscode
-    setup_uv -->|"library"| uv
-    ruff -->|"library"| ruff_action
-    uv -->|"library"| setup_uv
-    python_build_standalone -->|"library"| uv
+    repo_a["repo-a"]
+    repo_b["repo-b"]
+    repo_c["repo-c"]
+    repo_a -->|"library"| repo_b
+    repo_b -->|"container image"| repo_c
 ```
+
+> Replace the placeholder nodes above with actual repos and dependencies discovered through audits.
 
 ## High-Risk Nodes
 
 | Repo | Dependents | Risk |
 |---|---|---|
-| ruff-pre-commit | ruff, uv | medium |
+| | | |

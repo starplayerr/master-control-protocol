@@ -1,0 +1,180 @@
+{
+  "source_file": "audits/python-build-standalone.md",
+  "last_updated": "2026-03-31",
+  "identity": {
+    "repo_name": "python-build-standalone",
+    "github_url": "unknown",
+    "owners": "Gregory Szorc <gregory.szorc@gmail.com>",
+    "prod_status": "active",
+    "purpose": "Produces standalone, highly-redistributable builds of Python"
+  },
+  "tech_stack": {
+    "languages": "Python, Rust, Shell",
+    "frameworks": "unknown",
+    "build_tools": "Cargo, uv, Docker, Makefiles",
+    "runtime": "Docker containers, GitHub Actions"
+  },
+  "artifacts": [
+    {
+      "name": "python-build-standalone",
+      "type": "Python package",
+      "registry": "PyPI",
+      "destination": "PyPI registry"
+    },
+    {
+      "name": "pythonbuild",
+      "type": "Rust binary",
+      "registry": "GitHub Releases",
+      "destination": "GitHub releases"
+    },
+    {
+      "name": "Python distributions",
+      "type": "Standalone builds",
+      "registry": "GitHub Releases",
+      "destination": "GitHub releases"
+    },
+    {
+      "name": "Docker images",
+      "type": "Container images",
+      "registry": "GitHub Container Registry",
+      "destination": "ghcr.io"
+    }
+  ],
+  "package": {
+    "name": "python-build-standalone",
+    "registry": "PyPI, GitHub Releases",
+    "version": "0.1.0",
+    "version_strategy": "semver",
+    "consumers": "unknown",
+    "breaking_change_policy": "unknown"
+  },
+  "deployment": {
+    "ci": "GitHub Actions",
+    "cd": "GitHub Actions",
+    "targets": "Linux, macOS, Windows",
+    "pipeline_files": ".github/workflows/linux.yml, .github/workflows/macos.yml, .github/workflows/windows.yml, .github/workflows/release.yml"
+  },
+  "outbound_deps": [
+    {
+      "dependency": "boto3",
+      "type": "Python runtime",
+      "notes": "AWS SDK"
+    },
+    {
+      "dependency": "docker",
+      "type": "Python runtime",
+      "notes": "Docker SDK"
+    },
+    {
+      "dependency": "jinja2",
+      "type": "Python runtime",
+      "notes": "Template engine"
+    },
+    {
+      "dependency": "anyhow",
+      "type": "Rust crate",
+      "notes": "Error handling"
+    },
+    {
+      "dependency": "clap",
+      "type": "Rust crate",
+      "notes": "CLI parsing"
+    },
+    {
+      "dependency": "octocrab",
+      "type": "Rust crate",
+      "notes": "GitHub API client"
+    }
+  ],
+  "inbound_deps": [
+    {
+      "consumer": "unknown",
+      "type": "unknown",
+      "notes": "Consumers of standalone Python builds"
+    }
+  ],
+  "configs": [
+    {
+      "config": "Build targets",
+      "source": "ci-targets.yaml",
+      "notes": "CI build matrix configuration"
+    },
+    {
+      "config": "Runners",
+      "source": "ci-runners.yaml",
+      "notes": "CI runner configuration"
+    },
+    {
+      "config": "Extension modules",
+      "source": "cpython-unix/extension-modules.yml",
+      "notes": "Python extension module config"
+    },
+    {
+      "config": "Build targets",
+      "source": "cpython-unix/targets.yml",
+      "notes": "Unix build targets"
+    },
+    {
+      "config": "Build config",
+      "source": "pyproject.toml",
+      "notes": "Python project configuration"
+    },
+    {
+      "config": "Rust config",
+      "source": "Cargo.toml",
+      "notes": "Rust project configuration"
+    }
+  ],
+  "api_surface": [
+    {
+      "endpoint": "pythonbuild CLI",
+      "port": "N/A",
+      "protocol": "CLI",
+      "auth": "None",
+      "notes": "Rust binary for build operations"
+    },
+    {
+      "endpoint": "GitHub API",
+      "port": "443",
+      "protocol": "HTTPS",
+      "auth": "Token",
+      "notes": "Release upload/download"
+    },
+    {
+      "endpoint": "Docker API",
+      "port": "varies",
+      "protocol": "Docker",
+      "auth": "None",
+      "notes": "Container builds"
+    }
+  ],
+  "secrets": [
+    {
+      "name": "GITHUB_TOKEN",
+      "source": "GitHub Actions",
+      "usage": "GitHub API access, releases"
+    },
+    {
+      "name": "ASTRAL_VERSIONS_PAT",
+      "source": "GitHub Secrets",
+      "usage": "Updating versions repository"
+    },
+    {
+      "name": "MIRROR_R2_ACCESS_KEY_ID",
+      "source": "GitHub Secrets",
+      "usage": "R2 storage access"
+    },
+    {
+      "name": "MIRROR_R2_SECRET_ACCESS_KEY",
+      "source": "GitHub Secrets",
+      "usage": "R2 storage access"
+    }
+  ],
+  "known_gaps": [
+    "No clear versioning strategy visible for releases beyond the 0.1.0 in pyproject.toml",
+    "Bus factor concern: Gregory Szorc appears to be primary/sole maintainer",
+    "No clear documentation of consumer count or downstream impact",
+    "Complex build matrix with many platform/architecture combinations",
+    "Heavy dependency on external services (GitHub, AWS R2)"
+  ]
+}

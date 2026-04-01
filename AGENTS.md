@@ -6,12 +6,11 @@ Master Control Protocol is a structured memory and reasoning layer
 for multi-repo platforms. It is not a codebase — it is a knowledge system.
 
 It contains:
-- A catalog of all known repositories (INVENTORY.md)
-- Structured audit reports for each repo (audits/)
-- Platform-level synthesis maps (maps/)
-- Mermaid diagrams (diagrams/)
+- A forkable template for auditing any GitHub org
+- Automation scripts for discovery, auditing, synthesis, and feedback (scripts/)
 - LLM prompt templates for automated audits (prompts/)
-- Automation scripts for discovery and auditing (scripts/)
+- Empty template files for catalogs, maps, and reports
+- A complete example run against astral-sh (examples/astral-sh/)
 
 ## How to Read This Repo
 
@@ -19,10 +18,10 @@ Read files in this order:
 
 1. **This file** — orientation
 2. **mcp-manifest.json** — structure, read order, and freshness metadata
-3. **INVENTORY.md** — what repos exist and their audit status
-4. **PRIORITY_CLONES.md** — audit queue and sequencing
-5. **maps/** directory — platform-level synthesis (dependency matrix, deployment flow, source of truth, contradictions, stale assumptions, candidate simplifications, missing docs)
-6. **Individual audits** as needed — audits/<repo-name>.md
+3. **INVENTORY.md** — what repos exist and their audit status (empty template at root)
+4. **PRIORITY_CLONES.md** — audit queue and sequencing (empty template at root)
+5. **maps/** directory — platform-level synthesis templates
+6. **examples/astral-sh/** — complete proof-of-concept run with real data
 
 Every markdown file (except README.md) has YAML frontmatter with `role`, `last_updated`, `depends_on`, and `freshness` fields. Use these to assess what is current and what is stale.
 
@@ -57,6 +56,14 @@ scope: platform | per-repo
 
 - **depends_on** enables staleness propagation — if a dependency is newer, this file may be stale
 - **freshness** values: `current` (reflects latest audits), `stale` (dependencies changed since last update), `draft` (incomplete)
+
+## Repo Layout
+
+The root is a clean, forkable template. Data from a real run lives in `examples/astral-sh/`.
+
+- `scripts/` and `prompts/` are the engine — they stay at root
+- `audits/`, `maps/`, `feedback/`, `diagrams/`, `reports/` are empty templates at root
+- `examples/astral-sh/` contains populated data from a proof-of-concept run
 
 ## What NOT to Do
 

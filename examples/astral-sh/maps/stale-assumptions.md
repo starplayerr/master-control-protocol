@@ -1,12 +1,12 @@
 ---
-title: "Stale Assumptions"
-role: map
-last_updated: 2026-03-31
 depends_on:
-  - INVENTORY.md
-  - audits/*
-freshness: draft
+- INVENTORY.md
+- audits/*
+freshness: current
+last_updated: '2026-03-31'
+role: map
 scope: platform
+title: Stale Assumptions
 ---
 
 # Stale Assumptions
@@ -43,7 +43,9 @@ Repos, services, or assumptions that may not be actively harmful, but still appe
 
 | Assumption | Reality Check | Question | Action | Source |
 |---|---|---|---|---|
-| | | | | |
+| ruff claims 'ruff-action' depends on it | No audit exists for 'ruff-action' — cannot verify this consumer | Verify | needs-verification | audits/ruff.md |
+| setup-uv config references 'astral-sh/versions' | No audit exists for 'versions' | Verify | needs-verification | audits/setup-uv.md |
+| ruff-vscode uses or references a deprecated pattern | ruff-lsp is deprecated in favour of Ruff's native language server | Verify | high | audits/ruff-vscode.md |
 
 ---
 

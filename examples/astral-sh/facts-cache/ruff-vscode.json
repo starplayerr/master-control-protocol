@@ -1,0 +1,142 @@
+{
+  "source_file": "audits/ruff-vscode.md",
+  "last_updated": "2026-03-31",
+  "identity": {
+    "repo_name": "ruff-vscode",
+    "github_url": "https://github.com/astral-sh/ruff-vscode",
+    "owners": "astral-sh",
+    "prod_status": "active",
+    "purpose": "Visual Studio Code extension for Ruff Python linter and formatter"
+  },
+  "tech_stack": {
+    "languages": "TypeScript, Python",
+    "frameworks": "VS Code Extension API, Language Server Protocol",
+    "build_tools": "webpack, npm, vsce",
+    "runtime": "Node.js, VS Code"
+  },
+  "artifacts": [
+    {
+      "name": "ruff-*.vsix",
+      "type": "VS Code Extension",
+      "registry": "VS Code Marketplace",
+      "destination": "marketplace.visualstudio.com"
+    },
+    {
+      "name": "ruff-*.vsix",
+      "type": "VS Code Extension",
+      "registry": "OpenVSX Registry",
+      "destination": "open-vsx.org"
+    }
+  ],
+  "package": {
+    "name": "ruff",
+    "registry": "VS Code Marketplace, OpenVSX",
+    "version": "2026.38.0",
+    "version_strategy": "CalVer (YYYY.WW.PATCH)",
+    "consumers": "VS Code users developing Python code",
+    "breaking_change_policy": "unknown"
+  },
+  "deployment": {
+    "ci": "GitHub Actions",
+    "cd": "GitHub Actions",
+    "targets": "VS Code (multiple platforms: Windows, macOS, Linux, Alpine)",
+    "pipeline_files": ".github/workflows/ci.yaml, .github/workflows/release.yaml"
+  },
+  "outbound_deps": [
+    {
+      "dependency": "ms-python.python",
+      "type": "VS Code Extension",
+      "notes": "Required extension dependency"
+    },
+    {
+      "dependency": "ruff==0.15.7",
+      "type": "Python Package",
+      "notes": "Bundled Ruff binary"
+    },
+    {
+      "dependency": "ruff-lsp==0.0.62",
+      "type": "Python Package",
+      "notes": "Legacy language server"
+    },
+    {
+      "dependency": "packaging>=23.1",
+      "type": "Python Package",
+      "notes": "Version parsing utilities"
+    },
+    {
+      "dependency": "Node.js dependencies",
+      "type": "Runtime",
+      "notes": "webpack, vsce, eslint, prettier, etc."
+    }
+  ],
+  "inbound_deps": [
+    {
+      "consumer": "VS Code users",
+      "type": "Extension",
+      "notes": "Python developers using Ruff"
+    },
+    {
+      "consumer": "Python projects",
+      "type": "Extension",
+      "notes": "Linting and formatting integration"
+    }
+  ],
+  "configs": [
+    {
+      "config": "Extension settings",
+      "source": "VS Code settings.json",
+      "notes": "User/workspace configuration"
+    },
+    {
+      "config": "Ruff configuration",
+      "source": "pyproject.toml, ruff.toml",
+      "notes": "Ruff-specific configuration files"
+    },
+    {
+      "config": "Build configuration",
+      "source": "package.json",
+      "notes": "Extension metadata and build scripts"
+    },
+    {
+      "config": "CI/CD configuration",
+      "source": "GitHub Actions",
+      "notes": "Workflow definitions"
+    }
+  ],
+  "api_surface": [
+    {
+      "endpoint": "VS Code Extension API",
+      "port": "N/A",
+      "protocol": "VS Code IPC",
+      "auth": "N/A",
+      "notes": "Commands, settings, language features"
+    },
+    {
+      "endpoint": "Language Server Protocol",
+      "port": "N/A",
+      "protocol": "JSON-RPC",
+      "auth": "N/A",
+      "notes": "Communication with ruff-lsp or native server"
+    }
+  ],
+  "secrets": [
+    {
+      "name": "MARKETPLACE_TOKEN",
+      "source": "GitHub Secrets",
+      "usage": "Publishing to VS Code Marketplace"
+    },
+    {
+      "name": "OPENVSX_TOKEN",
+      "source": "GitHub Secrets",
+      "usage": "Publishing to OpenVSX Registry"
+    }
+  ],
+  "known_gaps": [
+    "No visible changelog maintenance (CHANGELOG.md present but content unknown)",
+    "Release frequency and versioning strategy details unclear",
+    "Bus factor concerns with single organization ownership",
+    "Complex multi-platform build process with many moving parts",
+    "Migration path from ruff-lsp to native server ongoing (deprecated settings)",
+    "Multiple registries to maintain (VS Code Marketplace + OpenVSX)"
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "window_hours": 48,
+  "analysis_period_months": 6,
+  "pairs": [
+    {
+      "repo_a": "python-build-standalone",
+      "repo_b": "ruff-pre-commit",
+      "coupling_score": 1.0,
+      "co_changes": 103,
+      "total_changes_a": 119,
+      "total_changes_b": 41,
+      "shared_authors": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    },
+    {
+      "repo_a": "python-build-standalone",
+      "repo_b": "setup-uv",
+      "coupling_score": 1.0,
+      "co_changes": 116,
+      "total_changes_a": 119,
+      "total_changes_b": 128,
+      "shared_authors": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "zsol.zsol@gmail.com"
+      ],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    },
+    {
+      "repo_a": "python-build-standalone",
+      "repo_b": "uv",
+      "coupling_score": 1.0,
+      "co_changes": 119,
+      "total_changes_a": 119,
+      "total_changes_b": 1229,
+      "shared_authors": [
+        "1324225+hugovk@users.noreply.github.com",
+        "176301910+mmangkad@users.noreply.github.com",
+        "charlie.r.marsh@gmail.com",
+        "contact@zanie.dev",
+        "geofft@ldpreload.com",
+        "jjhelmus@gmail.com",
+        "zsol.zsol@gmail.com"
+      ],
+      "known_dependency": true,
+      "finding": "Expected \u2014 known dependency"
+    },
+    {
+      "repo_a": "ruff-pre-commit",
+      "repo_b": "setup-uv",
+      "coupling_score": 1.0,
+      "co_changes": 40,
+      "total_changes_a": 41,
+      "total_changes_b": 128,
+      "shared_authors": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    },
+    {
+      "repo_a": "ruff-pre-commit",
+      "repo_b": "uv",
+      "coupling_score": 1.0,
+      "co_changes": 41,
+      "total_changes_a": 41,
+      "total_changes_b": 1229,
+      "shared_authors": [],
+      "known_dependency": true,
+      "finding": "Expected \u2014 known dependency"
+    },
+    {
+      "repo_a": "ruff-vscode",
+      "repo_b": "uv",
+      "coupling_score": 1.0,
+      "co_changes": 112,
+      "total_changes_a": 112,
+      "total_changes_b": 1229,
+      "shared_authors": [
+        "29139614+renovate[bot]@users.noreply.github.com",
+        "william@astral.sh"
+      ],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    },
+    {
+      "repo_a": "setup-uv",
+      "repo_b": "uv",
+      "coupling_score": 1.0,
+      "co_changes": 128,
+      "total_changes_a": 128,
+      "total_changes_b": 1229,
+      "shared_authors": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "reiter.christoph@gmail.com",
+        "william@astral.sh",
+        "zsol.zsol@gmail.com"
+      ],
+      "known_dependency": true,
+      "finding": "Expected \u2014 known dependency"
+    },
+    {
+      "repo_a": "ruff-vscode",
+      "repo_b": "setup-uv",
+      "coupling_score": 0.97,
+      "co_changes": 106,
+      "total_changes_a": 112,
+      "total_changes_b": 128,
+      "shared_authors": [
+        "william@astral.sh"
+      ],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    },
+    {
+      "repo_a": "python-build-standalone",
+      "repo_b": "ruff-vscode",
+      "coupling_score": 0.69,
+      "co_changes": 77,
+      "total_changes_a": 119,
+      "total_changes_b": 112,
+      "shared_authors": [],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    },
+    {
+      "repo_a": "ruff-pre-commit",
+      "repo_b": "ruff-vscode",
+      "coupling_score": 0.54,
+      "co_changes": 22,
+      "total_changes_a": 41,
+      "total_changes_b": 112,
+      "shared_authors": [],
+      "known_dependency": false,
+      "finding": "UNDOCUMENTED coupling \u2014 investigate"
+    }
+  ]
+}
