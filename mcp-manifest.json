@@ -17,5 +17,14 @@
   "maps_data_dir": "maps/data/",
   "diagrams_dir": "diagrams/",
   "prompts_dir": "prompts/",
-  "reports_dir": "reports/"
+  "reports_dir": "reports/",
+  "feedback_dir": "feedback/",
+  "feedback_files": {
+    "capture_log": "feedback/capture-log.jsonl",
+    "prompt_scores": "feedback/prompt-scores.json",
+    "map_quality": "feedback/map-quality.json",
+    "prompt_proposals": "feedback/prompt-proposals.md",
+    "dashboard": "feedback/dashboard.json",
+    "quality_history": "feedback/quality-history.jsonl"
+  }
 }

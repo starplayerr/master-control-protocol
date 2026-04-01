@@ -1,0 +1,33 @@
+{
+  "prompts/default.md": {
+    "audits_run": 1,
+    "avg_completeness": 0.0,
+    "contradiction_discovery_rate": 0.0,
+    "correction_rate": 0.0,
+    "gap_rate": 0.0,
+    "last_scored": "2026-04-01T00:38:13.904108+00:00",
+    "low_completeness_fields": [],
+    "repos": [
+      "master-control-protocol"
+    ],
+    "trend": "insufficient-data"
+  },
+  "prompts/library.md": {
+    "audits_run": 6,
+    "avg_completeness": 0.979,
+    "contradiction_discovery_rate": 1.0,
+    "correction_rate": 0.0,
+    "gap_rate": 0.167,
+    "last_scored": "2026-04-01T00:38:13.904391+00:00",
+    "low_completeness_fields": [],
+    "repos": [
+      "python-build-standalone",
+      "ruff",
+      "ruff-pre-commit",
+      "ruff-vscode",
+      "setup-uv",
+      "uv"
+    ],
+    "trend": "stable"
+  }
+}
