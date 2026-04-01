@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit runner: clone a repo, gather context, call LLM, produce structured report."""
+"""Audit runner: clone a repo (or use local path), gather context, call LLM, produce report."""
 
 from __future__ import annotations
 
@@ -56,7 +56,8 @@ def _build_metadata_comment(
 
 
 def run_audit(
-    repo_url: str,
+    repo_url: str | None = None,
+    local_path: str | Path | None = None,
     branch: str | None = None,
     prompt_override: str | None = None,
     provider: str = config.DEFAULT_PROVIDER,
@@ -66,22 +67,37 @@ def run_audit(
     interactive_capture: bool = False,
 ) -> Path | None:
     """Run a full audit on a single repo. Returns the path to the audit file, or None if skipped."""
-    # Derive repo name from URL
-    repo_name = repo_url.rstrip("/").split("/")[-1]
-    if repo_name.endswith(".git"):
-        repo_name = repo_name[:-4]
+    if bool(repo_url) == bool(local_path):
+        raise ValueError("Provide exactly one of repo_url or local_path.")
 
-    click.echo(f"Auditing {repo_name}...")
     clone_path = None
 
     try:
-        # Clone
-        click.echo(f"  Cloning {repo_url}...")
-        clone_path = shallow_clone(repo_url, branch)
-        head_sha = get_head_sha(clone_path)
+        if local_path is not None:
+            repo_path = Path(local_path).expanduser().resolve()
+            if not repo_path.is_dir():
+                raise click.ClickException(f"Local path is not a directory: {repo_path}")
+            if not (repo_path / ".git").exists():
+                raise click.ClickException(f"Local path is not a git repository: {repo_path}")
+            repo_name = repo_path.name
+            if branch:
+                click.echo("  Note: --branch is ignored when using --local-path")
+            click.echo(f"Auditing {repo_name}...")
+            click.echo(f"  Using local path: {repo_path}")
+        else:
+            assert repo_url is not None
+            repo_name = repo_url.rstrip("/").split("/")[-1]
+            if repo_name.endswith(".git"):
+                repo_name = repo_name[:-4]
+            click.echo(f"Auditing {repo_name}...")
+            click.echo(f"  Cloning {repo_url}...")
+            clone_path = shallow_clone(repo_url, branch)
+            repo_path = clone_path
+
+        head_sha = get_head_sha(repo_path)
 
         # Select prompt
-        prompt_name, prompt_content = select_prompt(clone_path, prompt_override)
+        prompt_name, prompt_content = select_prompt(repo_path, prompt_override)
         p_hash = prompt_hash(prompt_content)
         click.echo(f"  Prompt: {prompt_name} (hash: {p_hash})")
 
@@ -95,7 +111,7 @@ def run_audit(
 
         # Gather context
         click.echo("  Gathering context...")
-        ctx = gather_context(clone_path, budget=context_budget)
+        ctx = gather_context(repo_path, budget=context_budget)
         click.echo(f"  Included {len(ctx.included)} files ({ctx.total_chars:,} chars)")
         if ctx.excluded:
             click.echo(f"  Excluded {len(ctx.excluded)} files (budget/skip)")
@@ -165,18 +181,29 @@ def run_audit(
 
 
 @click.command()
-@click.option("--repo", required=True, help="Repository URL to audit")
-@click.option("--branch", default=None, help="Branch to audit (default: repo default branch)")
+@click.option("--repo", default=None, help="Repository URL to audit")
+@click.option(
+    "--local-path",
+    "local_path",
+    default=None,
+    type=click.Path(exists=True, file_okay=False, path_type=Path),
+    help="Local git repository path to audit (skips clone)",
+)
+@click.option("--branch", default=None, help="Branch to audit when using --repo")
 @click.option("--prompt", "prompt_override", default=None, help="Prompt name override (e.g., infrastructure, service)")
 @click.option("--provider", default=config.DEFAULT_PROVIDER, type=click.Choice(["anthropic", "openai"]))
 @click.option("--model", default=None, help="Specific model name")
 @click.option("--context-budget", default=config.DEFAULT_CONTEXT_BUDGET, type=int, help="Max context chars")
 @click.option("--force", is_flag=True, help="Re-audit even if current")
 @click.option("--interactive-capture", is_flag=True, help="Prompt for manual feedback after audit")
-def main(repo: str, branch: str | None, prompt_override: str | None, provider: str, model: str | None, context_budget: int, force: bool, interactive_capture: bool):
+def main(repo: str | None, local_path: Path | None, branch: str | None, prompt_override: str | None, provider: str, model: str | None, context_budget: int, force: bool, interactive_capture: bool):
     """Run a structured audit on a single repository."""
+    if bool(repo) == bool(local_path):
+        raise click.UsageError("Provide exactly one of --repo or --local-path.")
+
     result = run_audit(
         repo_url=repo,
+        local_path=local_path,
         branch=branch,
         prompt_override=prompt_override,
         provider=provider,

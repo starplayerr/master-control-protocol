@@ -38,12 +38,15 @@ Outputs `discovered.json` with repo metadata. Options: `--skip-archived`, `--ski
 
 ```bash
 python scripts/audit.py --repo https://github.com/org/repo-name
+# or, if already cloned locally
+python scripts/audit.py --local-path /path/to/repo
 ```
 
-Clones the repo, gathers context, auto-selects a prompt, calls the LLM, saves the report to `audits/<repo-name>.md`, updates INVENTORY.md and audit-state.json, then runs automated feedback capture.
+With `--repo`, MCP clones the repository first. With `--local-path`, MCP audits an existing local git checkout and skips cloning. In both cases it gathers context, auto-selects a prompt, calls the LLM, saves the report to `audits/<repo-name>.md`, updates INVENTORY.md and audit-state.json, then runs automated feedback capture.
 
 Options:
 - `--branch <branch>` — audit a specific branch
+- `--local-path <dir>` — audit an existing local git repository path (alternative to `--repo`)
 - `--prompt <name>` — override auto-detection (default, infrastructure, library, service, frontend)
 - `--provider <anthropic|openai>` — LLM provider
 - `--model <name>` — specific model
