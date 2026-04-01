@@ -1,0 +1,739 @@
+{
+  "org": "astral-sh",
+  "discovered_at": "2026-03-31T21:22:24.062218+00:00",
+  "repos": [
+    {
+      "name": "python-build-standalone",
+      "url": "https://github.com/astral-sh/python-build-standalone",
+      "default_branch": "main",
+      "last_commit_sha": "0b479dfdfd836c7c8bd2c469f27c245a0ad0ef91",
+      "last_commit_date": "2026-03-29T19:38:22+00:00",
+      "languages": {
+        "Python": 47,
+        "Rust": 26,
+        "Shell": 22,
+        "Makefile": 2,
+        "Dockerfile": 2,
+        "Just": 1,
+        "C": 0
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 3653
+    },
+    {
+      "name": "ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "default_branch": "main",
+      "last_commit_sha": "39c3636bc9c37db2652a0123848949a459e02988",
+      "last_commit_date": "2026-03-31T17:28:07+00:00",
+      "languages": {
+        "Rust": 96,
+        "Python": 3,
+        "TypeScript": 1,
+        "Shell": 0,
+        "CSS": 0,
+        "HTML": 0,
+        "Dockerfile": 0,
+        "JavaScript": 0,
+        "RenderScript": 0
+      },
+      "topics": [
+        "linter",
+        "pep8",
+        "python",
+        "python3",
+        "rust",
+        "rustpython",
+        "static-analysis",
+        "static-code-analysis",
+        "style-guide",
+        "styleguide",
+        "ruff"
+      ],
+      "archived": false,
+      "fork": false,
+      "size_kb": 132580
+    },
+    {
+      "name": "ruff-pre-commit",
+      "url": "https://github.com/astral-sh/ruff-pre-commit",
+      "default_branch": "main",
+      "last_commit_sha": "c53b915162b475dfc95c73f94219e6f87ace2fca",
+      "last_commit_date": "2026-03-30T07:46:48+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 228
+    },
+    {
+      "name": "ruff-vscode",
+      "url": "https://github.com/astral-sh/ruff-vscode",
+      "default_branch": "main",
+      "last_commit_sha": "99f7409378f28d560bc3feacf4960856090dd5b2",
+      "last_commit_date": "2026-03-30T07:46:10+00:00",
+      "languages": {
+        "TypeScript": 58,
+        "Python": 39,
+        "JavaScript": 2,
+        "Just": 1
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 2278
+    },
+    {
+      "name": "uv",
+      "url": "https://github.com/astral-sh/uv",
+      "default_branch": "main",
+      "last_commit_sha": "0c1d0f7c80a621d71df5ed82c2aa562f2d8d70ae",
+      "last_commit_date": "2026-03-31T14:51:27+00:00",
+      "languages": {
+        "Rust": 98,
+        "Python": 2,
+        "Shell": 0,
+        "Mustache": 0,
+        "Batchfile": 0,
+        "Dockerfile": 0,
+        "Nushell": 0,
+        "PowerShell": 0,
+        "Jupyter Notebook": 0,
+        "C": 0,
+        "RenderScript": 0
+      },
+      "topics": [
+        "packaging",
+        "python",
+        "resolver",
+        "uv"
+      ],
+      "archived": false,
+      "fork": false,
+      "size_kb": 149640
+    },
+    {
+      "name": "packse",
+      "url": "https://github.com/astral-sh/packse",
+      "default_branch": "main",
+      "last_commit_sha": "89c48cde4e51195feb0d442dfb60f72e1386d22f",
+      "last_commit_date": "2026-02-18T17:43:36+00:00",
+      "languages": {
+        "Python": 99,
+        "HTML": 1
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 10375
+    },
+    {
+      "name": "pypi-auth-test-proxy",
+      "url": "https://github.com/astral-sh/pypi-auth-test-proxy",
+      "default_branch": "main",
+      "last_commit_sha": "69704a234b0aac34e47e286316132dc700950b5d",
+      "last_commit_date": "2026-02-20T18:30:24+00:00",
+      "languages": {
+        "Dockerfile": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 10
+    },
+    {
+      "name": "uv-pre-commit",
+      "url": "https://github.com/astral-sh/uv-pre-commit",
+      "default_branch": "main",
+      "last_commit_sha": "20d6e6698b00aed95d4f269a6309b11c2c57b202",
+      "last_commit_date": "2026-03-27T00:34:48+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 108
+    },
+    {
+      "name": "docs",
+      "url": "https://github.com/astral-sh/docs",
+      "default_branch": "main",
+      "last_commit_sha": "236827ceed9b95afd23ad8576776a4abfd2d2fea",
+      "last_commit_date": "2026-03-31T19:09:26+00:00",
+      "languages": {
+        "HTML": 100,
+        "JavaScript": 0,
+        "CSS": 0
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 33457
+    },
+    {
+      "name": "uv-fastapi-example",
+      "url": "https://github.com/astral-sh/uv-fastapi-example",
+      "default_branch": "main",
+      "last_commit_sha": "a1e313147b9be055167fe500d457d7c0b2f51318",
+      "last_commit_date": "2025-07-29T12:24:57+00:00",
+      "languages": {
+        "Python": 89,
+        "Dockerfile": 11
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 28
+    },
+    {
+      "name": "setup-uv",
+      "url": "https://github.com/astral-sh/setup-uv",
+      "default_branch": "main",
+      "last_commit_sha": "d7fe1a5a186096cccdd5fa2252d223b54fa53a72",
+      "last_commit_date": "2026-03-31T07:27:10+00:00",
+      "languages": {
+        "TypeScript": 100,
+        "JavaScript": 0,
+        "Python": 0
+      },
+      "topics": [
+        "hacktoberfest",
+        "python",
+        "uv"
+      ],
+      "archived": false,
+      "fork": false,
+      "size_kb": 45829
+    },
+    {
+      "name": "uv-docker-example",
+      "url": "https://github.com/astral-sh/uv-docker-example",
+      "default_branch": "main",
+      "last_commit_sha": "00701a3361b9bdc896f8549fb9f890f99d115824",
+      "last_commit_date": "2026-03-02T17:15:58+00:00",
+      "languages": {
+        "Dockerfile": 81,
+        "Shell": 16,
+        "Python": 2
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 130
+    },
+    {
+      "name": "uv-flask-example",
+      "url": "https://github.com/astral-sh/uv-flask-example",
+      "default_branch": "main",
+      "last_commit_sha": "5874bbd139787464b06dd7f957e05d6e7b583953",
+      "last_commit_date": "2024-08-28T15:17:17+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 4
+    },
+    {
+      "name": "ruff-action",
+      "url": "https://github.com/astral-sh/ruff-action",
+      "default_branch": "main",
+      "last_commit_sha": "5b5935861b2e3cbafe8312524ba60a5dadc4facd",
+      "last_commit_date": "2026-03-31T05:39:51+00:00",
+      "languages": {
+        "TypeScript": 99,
+        "JavaScript": 0,
+        "Python": 0
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 3882
+    },
+    {
+      "name": "trusted-publishing-examples",
+      "url": "https://github.com/astral-sh/trusted-publishing-examples",
+      "default_branch": "main",
+      "last_commit_sha": "0d9a424f9278351cddeb536df9f004208b90e9a5",
+      "last_commit_date": "2025-09-09T14:28:19+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 34
+    },
+    {
+      "name": "workspace-in-root-test",
+      "url": "https://github.com/astral-sh/workspace-in-root-test",
+      "default_branch": "main",
+      "last_commit_sha": "d3ab48d2338296d47e28dbb2fb327c5e2ac4ac68",
+      "last_commit_date": "2024-10-29T13:59:20+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 1
+    },
+    {
+      "name": "workspace-virtual-root-test",
+      "url": "https://github.com/astral-sh/workspace-virtual-root-test",
+      "default_branch": "main",
+      "last_commit_sha": "fac39c8d4c5d0ef32744e2bb309bbe34a759fd46",
+      "last_commit_date": "2024-07-04T12:55:54+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 6
+    },
+    {
+      "name": "sanitize-wheel-test",
+      "url": "https://github.com/astral-sh/sanitize-wheel-test",
+      "default_branch": "main",
+      "last_commit_sha": "bb9791280db36f1342d82ea6590b7ec5c291e772",
+      "last_commit_date": "2024-10-31T18:42:15+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 3
+    },
+    {
+      "name": ".github",
+      "url": "https://github.com/astral-sh/.github",
+      "default_branch": "main",
+      "last_commit_sha": "c5187e200db51bfe11d56e13053d29bd3793fdd8",
+      "last_commit_date": "2026-03-13T16:31:13+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 8
+    },
+    {
+      "name": "uv-path-dependency-test",
+      "url": "https://github.com/astral-sh/uv-path-dependency-test",
+      "default_branch": "main",
+      "last_commit_sha": "28781b32cf1f260cdb2c8040628079eb265202bd",
+      "last_commit_date": "2024-12-03T03:53:38+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 3
+    },
+    {
+      "name": "uv-dynamic-metadata-test",
+      "url": "https://github.com/astral-sh/uv-dynamic-metadata-test",
+      "default_branch": "main",
+      "last_commit_sha": "6c5aa0a65db737c9e7e2e60dc865bd8087012e64",
+      "last_commit_date": "2024-12-03T04:42:52+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 10
+    },
+    {
+      "name": "uv-backwards-path-test",
+      "url": "https://github.com/astral-sh/uv-backwards-path-test",
+      "default_branch": "main",
+      "last_commit_sha": "4bcc7fcd2e548c2ab7ba6b97b1c4e3ababccc7a9",
+      "last_commit_date": "2024-12-03T04:58:14+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 8
+    },
+    {
+      "name": "tokio-tar",
+      "url": "https://github.com/astral-sh/tokio-tar",
+      "default_branch": "main",
+      "last_commit_sha": "1e64c7378ff6799a6536a1e91b467ae7ae8f05db",
+      "last_commit_date": "2026-03-30T19:08:39+00:00",
+      "languages": {
+        "Rust": 100,
+        "Shell": 0
+      },
+      "topics": [
+        "async",
+        "rust",
+        "tar"
+      ],
+      "archived": false,
+      "fork": false,
+      "size_kb": 838
+    },
+    {
+      "name": "workspace-with-root-dependency-test",
+      "url": "https://github.com/astral-sh/workspace-with-root-dependency-test",
+      "default_branch": "main",
+      "last_commit_sha": "62b1a760a855e06a538021f3d6a79f757b1dd901",
+      "last_commit_date": "2024-12-09T21:53:40+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 2
+    },
+    {
+      "name": "uv-stale-egg-info-test",
+      "url": "https://github.com/astral-sh/uv-stale-egg-info-test",
+      "default_branch": "main",
+      "last_commit_sha": "fea10416b9c479ac88fb217e14e40249b63bfbee",
+      "last_commit_date": "2024-12-10T02:09:50+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 6
+    },
+    {
+      "name": "archive-in-git-test",
+      "url": "https://github.com/astral-sh/archive-in-git-test",
+      "default_branch": "main",
+      "last_commit_sha": "bb7ce6abf9f90544767701de5b7b0c7802dc642b",
+      "last_commit_date": "2024-12-21T18:05:57+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 12
+    },
+    {
+      "name": "uv-aws-lambda-example",
+      "url": "https://github.com/astral-sh/uv-aws-lambda-example",
+      "default_branch": "main",
+      "last_commit_sha": "911e1c555de1ae1c7c292a15218bbbecf1f136dc",
+      "last_commit_date": "2025-12-15T15:11:59+00:00",
+      "languages": {
+        "Dockerfile": 86,
+        "Python": 14
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 25
+    },
+    {
+      "name": "mirror",
+      "url": "https://github.com/astral-sh/mirror",
+      "default_branch": "main",
+      "last_commit_sha": "65bd20c62d9aa04bf5b401e07357e0af5816b184",
+      "last_commit_date": "2025-09-16T18:31:26+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 39074
+    },
+    {
+      "name": "uvx-dummy",
+      "url": "https://github.com/astral-sh/uvx-dummy",
+      "default_branch": "main",
+      "last_commit_sha": "0771ba9e6afaafb6431a72396f917a94ac75803f",
+      "last_commit_date": "2025-06-02T22:10:17+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 3
+    },
+    {
+      "name": "ty",
+      "url": "https://github.com/astral-sh/ty",
+      "default_branch": "main",
+      "last_commit_sha": "5c9e342c2ea67a0ac8749d32296dd3071974927a",
+      "last_commit_date": "2026-03-31T18:50:49+00:00",
+      "languages": {
+        "Python": 74,
+        "Shell": 18,
+        "Dockerfile": 9
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 4201
+    },
+    {
+      "name": "ty-vscode",
+      "url": "https://github.com/astral-sh/ty-vscode",
+      "default_branch": "main",
+      "last_commit_sha": "247c934a709915c9aa2cb02fc314507dde94d857",
+      "last_commit_date": "2026-03-31T19:19:59+00:00",
+      "languages": {
+        "TypeScript": 69,
+        "Python": 24,
+        "JavaScript": 4,
+        "Just": 3
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 1006
+    },
+    {
+      "name": "ecosystem-analyzer",
+      "url": "https://github.com/astral-sh/ecosystem-analyzer",
+      "default_branch": "main",
+      "last_commit_sha": "73fe4d9a7c940023ac2addc008097758c877b7ec",
+      "last_commit_date": "2026-03-23T13:09:13+00:00",
+      "languages": {
+        "Python": 69,
+        "HTML": 31
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 234
+    },
+    {
+      "name": "uv-cloudflare-workers-example",
+      "url": "https://github.com/astral-sh/uv-cloudflare-workers-example",
+      "default_branch": "main",
+      "last_commit_sha": "d0e4ef757842decc82e9753605f40db6fa421df1",
+      "last_commit_date": "2025-06-26T01:13:46+00:00",
+      "languages": {
+        "Shell": 58,
+        "Python": 42
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 8
+    },
+    {
+      "name": "docstring-adder",
+      "url": "https://github.com/astral-sh/docstring-adder",
+      "default_branch": "main",
+      "last_commit_sha": "23d283f58ffee928b4de13c6b9c36c6e13998243",
+      "last_commit_date": "2026-03-30T06:52:27+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 456
+    },
+    {
+      "name": "sigstore-models",
+      "url": "https://github.com/astral-sh/sigstore-models",
+      "default_branch": "main",
+      "last_commit_sha": "bd879bc12a14f94e33a5c1d6b689a5334fc8ed29",
+      "last_commit_date": "2025-11-26T19:22:26+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [
+        "packaging",
+        "python",
+        "sigstore"
+      ],
+      "archived": false,
+      "fork": false,
+      "size_kb": 70
+    },
+    {
+      "name": "ambient-id",
+      "url": "https://github.com/astral-sh/ambient-id",
+      "default_branch": "main",
+      "last_commit_sha": "11d56b6a343031215823d5252bfc40655d0f6e36",
+      "last_commit_date": "2026-02-18T15:27:41+00:00",
+      "languages": {
+        "Rust": 100
+      },
+      "topics": [
+        "authentication",
+        "github-actions",
+        "gitlab-ci",
+        "oidc"
+      ],
+      "archived": false,
+      "fork": false,
+      "size_kb": 82
+    },
+    {
+      "name": "uv-ecosystem-testing",
+      "url": "https://github.com/astral-sh/uv-ecosystem-testing",
+      "default_branch": "main",
+      "last_commit_sha": "50ed1c0b195e773da684d72db6e863aba32ffcde",
+      "last_commit_date": "2026-03-24T16:06:56+00:00",
+      "languages": {
+        "Python": 99,
+        "Dockerfile": 1
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 619
+    },
+    {
+      "name": "pyx-auth-action",
+      "url": "https://github.com/astral-sh/pyx-auth-action",
+      "default_branch": "main",
+      "last_commit_sha": "707b318e1234d0f92eac66e1c95b909b5b8e60f0",
+      "last_commit_date": "2026-03-30T20:09:41+00:00",
+      "languages": {
+        "Python": 98,
+        "Makefile": 2
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 136
+    },
+    {
+      "name": "claude-code-plugins",
+      "url": "https://github.com/astral-sh/claude-code-plugins",
+      "default_branch": "main",
+      "last_commit_sha": "f3ce88a7ba830f53afd6d944c1d0278ed318e142",
+      "last_commit_date": "2026-02-27T16:09:15+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 17
+    },
+    {
+      "name": "lfs-cowsay",
+      "url": "https://github.com/astral-sh/lfs-cowsay",
+      "default_branch": "main",
+      "last_commit_sha": "44b8e65c8ecd376e4482a68b29312227879a226d",
+      "last_commit_date": "2025-11-11T13:35:08+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 58
+    },
+    {
+      "name": "test-lfs-repo",
+      "url": "https://github.com/astral-sh/test-lfs-repo",
+      "default_branch": "main",
+      "last_commit_sha": "e282f5be233e3f1d44934164895a043fc534b8aa",
+      "last_commit_date": "2026-03-23T20:40:03+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 3
+    },
+    {
+      "name": "attest-action",
+      "url": "https://github.com/astral-sh/attest-action",
+      "default_branch": "main",
+      "last_commit_sha": "8b46be8081ef721ae9e7295592d28ea580292c51",
+      "last_commit_date": "2026-03-30T20:58:32+00:00",
+      "languages": {
+        "Python": 97,
+        "Makefile": 3
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 460
+    },
+    {
+      "name": "renovate-config",
+      "url": "https://github.com/astral-sh/renovate-config",
+      "default_branch": "main",
+      "last_commit_sha": "d15a2995af66c69b5b05549871b734341fd0ef66",
+      "last_commit_date": "2026-01-19T19:21:14+00:00",
+      "languages": {},
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 34
+    },
+    {
+      "name": "versions",
+      "url": "https://github.com/astral-sh/versions",
+      "default_branch": "main",
+      "last_commit_sha": "5e50d8029f727ac3f5d7ed94764d5e732d29ddb9",
+      "last_commit_date": "2026-03-26T21:33:55+00:00",
+      "languages": {
+        "Python": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 6486
+    },
+    {
+      "name": "futzed-wheels",
+      "url": "https://github.com/astral-sh/futzed-wheels",
+      "default_branch": "main",
+      "last_commit_sha": "81bb72c19ba90f0d5ba989896d9fc8f6e15e0308",
+      "last_commit_date": "2026-02-11T17:07:25+00:00",
+      "languages": {
+        "Python": 79,
+        "Shell": 21
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 8
+    },
+    {
+      "name": "multiplay",
+      "url": "https://github.com/astral-sh/multiplay",
+      "default_branch": "main",
+      "last_commit_sha": "a33dc38ca8d9a4528a72c26f64cec53fba80b313",
+      "last_commit_date": "2026-03-15T17:40:53+00:00",
+      "languages": {
+        "JavaScript": 55,
+        "Python": 26,
+        "CSS": 15,
+        "HTML": 4,
+        "Dockerfile": 0,
+        "Shell": 0
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 307
+    },
+    {
+      "name": "termux-python",
+      "url": "https://github.com/astral-sh/termux-python",
+      "default_branch": "main",
+      "last_commit_sha": "483ce668735b54c5e8eb53ce7aebf2acad7ecff6",
+      "last_commit_date": "2026-03-19T20:47:20+00:00",
+      "languages": {
+        "Dockerfile": 100
+      },
+      "topics": [],
+      "archived": false,
+      "fork": false,
+      "size_kb": 2
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "source_file": "audits/ruff.md",
+  "last_updated": "2026-04-01",
+  "identity": {
+    "repo_name": "ruff",
+    "github_url": "https://github.com/astral-sh/ruff",
+    "owners": "Astral Software Inc.",
+    "prod_status": "active",
+    "purpose": "An extremely fast Python linter and code formatter, written in Rust"
+  },
+  "tech_stack": {
+    "languages": "Rust, Python, JavaScript/TypeScript",
+    "frameworks": "Maturin, wasm-bindgen, React/Vite",
+    "build_tools": "Cargo, maturin, npm",
+    "runtime": "Native binary, Python package, WebAssembly"
+  },
+  "artifacts": [
+    {
+      "name": "ruff",
+      "type": "Python package",
+      "registry": "PyPI",
+      "destination": "pip install ruff"
+    },
+    {
+      "name": "ruff",
+      "type": "Binary",
+      "registry": "GitHub Releases",
+      "destination": "Standalone installers"
+    },
+    {
+      "name": "@astral-sh/ruff-wasm-*",
+      "type": "npm packages",
+      "registry": "NPM",
+      "destination": "JavaScript environments"
+    },
+    {
+      "name": "ghcr.io/astral-sh/ruff",
+      "type": "Docker image",
+      "registry": "GHCR",
+      "destination": "Container registry"
+    }
+  ],
+  "package": {
+    "name": "ruff",
+    "registry": "PyPI",
+    "version": "0.15.8",
+    "version_strategy": "Semantic versioning",
+    "consumers": "Apache Airflow, Apache Superset, FastAPI, Hugging Face, Pandas, SciPy",
+    "breaking_change_policy": "Minor version bumps for breaking changes"
+  },
+  "deployment": {
+    "ci": "GitHub Actions",
+    "cd": "cargo-dist",
+    "targets": "PyPI, GitHub Releases, npm, Docker Registry",
+    "pipeline_files": ".github/workflows/release.yml"
+  },
+  "outbound_deps": [
+    {
+      "dependency": "Rust toolchain",
+      "type": "Build",
+      "notes": "Version 1.94 specified"
+    },
+    {
+      "dependency": "Python",
+      "type": "Build",
+      "notes": "Python 3.7+ supported"
+    },
+    {
+      "dependency": "cargo-dist",
+      "type": "Release",
+      "notes": "Version 0.31.0"
+    },
+    {
+      "dependency": "maturin",
+      "type": "Build",
+      "notes": "Python package building"
+    }
+  ],
+  "inbound_deps": [
+    {
+      "consumer": "ruff-pre-commit",
+      "type": "Git hooks",
+      "notes": "Pre-commit integration"
+    },
+    {
+      "consumer": "ruff-vscode",
+      "type": "Editor extension",
+      "notes": "VS Code extension"
+    },
+    {
+      "consumer": "ruff-action",
+      "type": "GitHub Action",
+      "notes": "CI integration"
+    },
+    {
+      "consumer": "Major Python projects",
+      "type": "Direct usage",
+      "notes": "Listed in README"
+    }
+  ],
+  "configs": [
+    {
+      "config": "Cargo.toml",
+      "source": "Repository",
+      "notes": "Rust workspace configuration"
+    },
+    {
+      "config": "pyproject.toml",
+      "source": "Repository",
+      "notes": "Python package metadata"
+    },
+    {
+      "config": "dist-workspace.toml",
+      "source": "Repository",
+      "notes": "cargo-dist configuration"
+    },
+    {
+      "config": "rust-toolchain.toml",
+      "source": "Repository",
+      "notes": "Rust version specification"
+    }
+  ],
+  "api_surface": [
+    {
+      "endpoint": "CLI binary",
+      "port": "N/A",
+      "protocol": "Command line",
+      "auth": "None",
+      "notes": "Primary interface"
+    },
+    {
+      "endpoint": "Python module",
+      "port": "N/A",
+      "protocol": "Python import",
+      "auth": "None",
+      "notes": "`import ruff`"
+    },
+    {
+      "endpoint": "WASM bindings",
+      "port": "N/A",
+      "protocol": "JavaScript",
+      "auth": "None",
+      "notes": "Web/Node.js usage"
+    },
+    {
+      "endpoint": "LSP server",
+      "port": "N/A",
+      "protocol": "LSP",
+      "auth": "None",
+      "notes": "Editor integration"
+    }
+  ],
+  "secrets": [
+    {
+      "name": "GITHUB_TOKEN",
+      "source": "GitHub Actions",
+      "usage": "Release automation"
+    },
+    {
+      "name": "ASTRAL_VERSIONS_PAT",
+      "source": "Secrets",
+      "usage": "Version updates"
+    },
+    {
+      "name": "ASTRAL_DOCS_PAT",
+      "source": "Secrets",
+      "usage": "Documentation publishing"
+    },
+    {
+      "name": "CF_API_TOKEN",
+      "source": "Secrets",
+      "usage": "Playground deployment"
+    },
+    {
+      "name": "PyPI trusted publishing",
+      "source": "OIDC",
+      "usage": "PyPI releases"
+    }
+  ],
+  "known_gaps": [
+    "No explicit changelog maintenance strategy documented",
+    "Bus factor risk with primary maintainer Charlie Marsh",
+    "Multiple playground applications but unclear deployment strategy coordination",
+    "Complex multi-artifact release pipeline with many moving parts"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "source_file": "audits/uv.md",
+  "last_updated": "2026-03-31",
+  "identity": {
+    "repo_name": "uv",
+    "github_url": "https://github.com/astral-sh/uv",
+    "owners": "Astral Software Inc.",
+    "prod_status": "active",
+    "purpose": "An extremely fast Python package and project manager, written in Rust"
+  },
+  "tech_stack": {
+    "languages": "Rust, Python",
+    "frameworks": "Cargo (Rust workspace), maturin (Python bindings)",
+    "build_tools": "Cargo, maturin",
+    "runtime": "Native binary"
+  },
+  "artifacts": [
+    {
+      "name": "uv",
+      "type": "Python wheel",
+      "registry": "PyPI",
+      "destination": "https://pypi.org/project/uv/"
+    },
+    {
+      "name": "uv",
+      "type": "Binary",
+      "registry": "GitHub Releases",
+      "destination": "https://github.com/astral-sh/uv/releases"
+    },
+    {
+      "name": "uv-build",
+      "type": "Python wheel",
+      "registry": "PyPI",
+      "destination": "https://pypi.org/project/uv-build/"
+    },
+    {
+      "name": "uv",
+      "type": "Docker image",
+      "registry": "GHCR",
+      "destination": "ghcr.io/astral-sh/uv"
+    },
+    {
+      "name": "Rust crates",
+      "type": "Crate",
+      "registry": "crates.io",
+      "destination": "Various uv-* crates"
+    }
+  ],
+  "package": {
+    "name": "uv",
+    "registry": "PyPI, GitHub Releases, crates.io",
+    "version": "0.11.2",
+    "version_strategy": "SemVer",
+    "consumers": "Python developers, CI/CD systems",
+    "breaking_change_policy": "Preview status, breaking changes allowed in 0.x"
+  },
+  "deployment": {
+    "ci": "GitHub Actions",
+    "cd": "cargo-dist",
+    "targets": "Linux, macOS, Windows (multiple architectures)",
+    "pipeline_files": ".github/workflows/release.yml, build-release-binaries.yml"
+  },
+  "outbound_deps": [
+    {
+      "dependency": "Rust crates",
+      "type": "Build/Runtime",
+      "notes": "70+ internal workspace crates, many external deps"
+    },
+    {
+      "dependency": "PubGrub",
+      "type": "Runtime",
+      "notes": "Dependency resolver"
+    },
+    {
+      "dependency": "Cargo toolchain",
+      "type": "Build",
+      "notes": "Rust compilation"
+    },
+    {
+      "dependency": "Python interpreters",
+      "type": "Runtime",
+      "notes": "For testing and validation"
+    },
+    {
+      "dependency": "maturin",
+      "type": "Build",
+      "notes": "Python wheel generation"
+    }
+  ],
+  "inbound_deps": [
+    {
+      "consumer": "Python developers",
+      "type": "End users",
+      "notes": "Package/project management"
+    },
+    {
+      "consumer": "CI/CD systems",
+      "type": "Automation",
+      "notes": "GitHub Actions, GitLab CI"
+    },
+    {
+      "consumer": "Other tools",
+      "type": "Integration",
+      "notes": "Poetry, pip replacement scenarios"
+    }
+  ],
+  "configs": [
+    {
+      "config": "Version",
+      "source": "pyproject.toml, Cargo.toml",
+      "notes": "Multiple files need sync"
+    },
+    {
+      "config": "Release config",
+      "source": "dist-workspace.toml",
+      "notes": "cargo-dist configuration"
+    },
+    {
+      "config": "CI config",
+      "source": ".github/workflows/",
+      "notes": "GitHub Actions workflows"
+    },
+    {
+      "config": "Rust toolchain",
+      "source": "rust-toolchain.toml",
+      "notes": "Pinned to 1.94.0"
+    }
+  ],
+  "api_surface": [
+    {
+      "endpoint": "uv CLI",
+      "port": "N/A",
+      "protocol": "Process",
+      "auth": "None",
+      "notes": "Main binary interface"
+    },
+    {
+      "endpoint": "uvx CLI",
+      "port": "N/A",
+      "protocol": "Process",
+      "auth": "None",
+      "notes": "Tool runner alias"
+    },
+    {
+      "endpoint": "Python module",
+      "port": "N/A",
+      "protocol": "Python import",
+      "auth": "None",
+      "notes": "Wrapper around binary"
+    },
+    {
+      "endpoint": "Rust crate APIs",
+      "port": "N/A",
+      "protocol": "Library",
+      "auth": "None",
+      "notes": "Public Rust interfaces"
+    }
+  ],
+  "secrets": [
+    {
+      "name": "GITHUB_TOKEN",
+      "source": "GitHub Actions",
+      "usage": "Release automation, crates.io auth"
+    },
+    {
+      "name": "PyPI tokens",
+      "source": "GitHub Secrets",
+      "usage": "Package publishing"
+    },
+    {
+      "name": "Signing keys",
+      "source": "GitHub Actions",
+      "usage": "macOS code signing"
+    }
+  ],
+  "known_gaps": [
+    "Complex multi-crate workspace with 70+ internal crates may have dependency management overhead",
+    "Version synchronization across pyproject.toml, multiple Cargo.toml files managed by tooling",
+    "Preview/0.x status means breaking changes are expected",
+    "Large binary size concerns mentioned in Dockerfile comments",
+    "Heavy CI matrix across many platforms increases maintenance burden"
+  ]
+}

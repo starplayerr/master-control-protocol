@@ -1,0 +1,156 @@
+{
+  "source_file": "audits/setup-uv.md",
+  "last_updated": "2026-03-31",
+  "identity": {
+    "repo_name": "setup-uv",
+    "github_url": "https://github.com/astral-sh/setup-uv",
+    "owners": "@eifinger (from package.json), astral-sh org",
+    "prod_status": "active",
+    "purpose": "GitHub Action to install and configure uv (Python package manager) in CI workflows"
+  },
+  "tech_stack": {
+    "languages": "TypeScript",
+    "frameworks": "GitHub Actions",
+    "build_tools": "npm, esbuild, @vercel/ncc",
+    "runtime": "Node.js"
+  },
+  "artifacts": [
+    {
+      "name": "GitHub Action",
+      "type": "composite action",
+      "registry": "GitHub Actions Marketplace",
+      "destination": "GitHub Actions workflows"
+    },
+    {
+      "name": "Compiled bundles",
+      "type": "JavaScript bundles",
+      "registry": "dist/ directory",
+      "destination": "GitHub repository"
+    }
+  ],
+  "package": {
+    "name": "setup-uv",
+    "registry": "GitHub Actions Marketplace",
+    "version": "v8.0.0",
+    "version_strategy": "semver with git tags",
+    "consumers": "GitHub Actions workflows using astral-sh/setup-uv",
+    "breaking_change_policy": "unknown"
+  },
+  "deployment": {
+    "ci": "GitHub Actions",
+    "cd": "GitHub Actions",
+    "targets": "GitHub Actions runners (ubuntu, macos, windows)",
+    "pipeline_files": ".github/workflows/test.yml, .github/workflows/codeql-analysis.yml, .github/workflows/update-known-checksums.yml, .github/workflows/release-drafter.yml"
+  },
+  "outbound_deps": [
+    {
+      "dependency": "@actions/cache",
+      "type": "runtime",
+      "notes": "GitHub Actions cache functionality"
+    },
+    {
+      "dependency": "@actions/core",
+      "type": "runtime",
+      "notes": "Core GitHub Actions toolkit"
+    },
+    {
+      "dependency": "@actions/exec",
+      "type": "runtime",
+      "notes": "Execute commands in actions"
+    },
+    {
+      "dependency": "@actions/glob",
+      "type": "runtime",
+      "notes": "File globbing utilities"
+    },
+    {
+      "dependency": "@actions/io",
+      "type": "runtime",
+      "notes": "File I/O utilities"
+    },
+    {
+      "dependency": "@actions/tool-cache",
+      "type": "runtime",
+      "notes": "Tool caching functionality"
+    },
+    {
+      "dependency": "@renovatebot/pep440",
+      "type": "runtime",
+      "notes": "Python version parsing"
+    },
+    {
+      "dependency": "smol-toml",
+      "type": "runtime",
+      "notes": "TOML file parsing"
+    },
+    {
+      "dependency": "undici",
+      "type": "runtime",
+      "notes": "HTTP client"
+    }
+  ],
+  "inbound_deps": [
+    {
+      "consumer": "GitHub Actions workflows",
+      "type": "action consumer",
+      "notes": "Any workflow using astral-sh/setup-uv"
+    },
+    {
+      "consumer": "astral-sh/uv users",
+      "type": "indirect",
+      "notes": "Workflows that need uv installation"
+    }
+  ],
+  "configs": [
+    {
+      "config": "Action metadata",
+      "source": "action.yml",
+      "notes": "Defines inputs, outputs, and action behavior"
+    },
+    {
+      "config": "uv versions",
+      "source": "astral-sh/versions manifest",
+      "notes": "Remote manifest for available uv versions"
+    },
+    {
+      "config": "GitHub releases",
+      "source": "astral-sh/uv releases",
+      "notes": "Downloads uv binaries from GitHub"
+    },
+    {
+      "config": "Project configs",
+      "source": "uv.toml, pyproject.toml",
+      "notes": "User project files for version detection"
+    }
+  ],
+  "api_surface": [
+    {
+      "endpoint": "GitHub Action inputs",
+      "port": "N/A",
+      "protocol": "GitHub Actions",
+      "auth": "GitHub token",
+      "notes": "version, python-version, enable-cache, etc."
+    },
+    {
+      "endpoint": "GitHub Action outputs",
+      "port": "N/A",
+      "protocol": "GitHub Actions",
+      "auth": "N/A",
+      "notes": "uv-version, uv-path, cache-hit, etc."
+    }
+  ],
+  "secrets": [
+    {
+      "name": "GITHUB_TOKEN",
+      "source": "GitHub Actions",
+      "usage": "Downloading uv from GitHub releases"
+    }
+  ],
+  "known_gaps": [
+    "No explicit versioning policy or changelog mentioned",
+    "Release frequency unknown",
+    "Breaking change policy not documented",
+    "No explicit documentation of supported uv version ranges",
+    "Bus factor concerns - single author listed in package.json"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "source_file": "audits/ruff-pre-commit.md",
+  "last_updated": "2026-03-31",
+  "identity": {
+    "repo_name": "ruff-pre-commit",
+    "github_url": "https://github.com/astral-sh/ruff-pre-commit",
+    "owners": "astral-sh",
+    "prod_status": "active",
+    "purpose": "Pre-commit hook wrapper for Ruff linter/formatter"
+  },
+  "tech_stack": {
+    "languages": "Python",
+    "frameworks": "pre-commit",
+    "build_tools": "uv",
+    "runtime": "Python"
+  },
+  "artifacts": [
+    {
+      "name": "pre-commit hook",
+      "type": "pre-commit hook",
+      "registry": "GitHub",
+      "destination": "pre-commit ecosystem"
+    }
+  ],
+  "package": {
+    "name": "ruff-pre-commit",
+    "registry": "GitHub (pre-commit hooks)",
+    "version": "v0.15.8",
+    "version_strategy": "mirrors Ruff version",
+    "consumers": "pre-commit users, prek users",
+    "breaking_change_policy": "follows Ruff's breaking change policy"
+  },
+  "deployment": {
+    "ci": "GitHub Actions",
+    "cd": "GitHub Actions",
+    "targets": "GitHub repository",
+    "pipeline_files": ".github/workflows/main.yml"
+  },
+  "outbound_deps": [
+    {
+      "dependency": "ruff==0.15.8",
+      "type": "Python package",
+      "notes": "Pinned to specific version"
+    },
+    {
+      "dependency": "uv",
+      "type": "Build tool",
+      "notes": "For Python package management"
+    }
+  ],
+  "inbound_deps": [
+    {
+      "consumer": "pre-commit users",
+      "type": "pre-commit hook",
+      "notes": "Anyone using ruff via pre-commit"
+    },
+    {
+      "consumer": "prek users",
+      "type": "prek hook",
+      "notes": "Anyone using ruff via prek"
+    }
+  ],
+  "configs": [
+    {
+      "config": "Ruff version",
+      "source": "PyPI releases",
+      "notes": "Automated mirroring via repository_dispatch"
+    },
+    {
+      "config": "Hook definitions",
+      "source": ".pre-commit-hooks.yaml",
+      "notes": "Defines available hooks"
+    },
+    {
+      "config": "Build config",
+      "source": "pyproject.toml",
+      "notes": "Python project configuration"
+    }
+  ],
+  "api_surface": [
+    {
+      "endpoint": "ruff-check hook",
+      "port": "N/A",
+      "protocol": "pre-commit",
+      "auth": "none",
+      "notes": "Linting hook"
+    },
+    {
+      "endpoint": "ruff-format hook",
+      "port": "N/A",
+      "protocol": "pre-commit",
+      "auth": "none",
+      "notes": "Formatting hook"
+    }
+  ],
+  "secrets": [
+    {
+      "name": "GITHUB_TOKEN",
+      "source": "GitHub Actions",
+      "usage": "Creating releases and pushing commits"
+    }
+  ],
+  "known_gaps": [
+    "No visible changelog or release notes beyond GitHub releases",
+    "Automated mirroring could fail if PyPI webhook system changes",
+    "No explicit versioning strategy documented beyond following Ruff",
+    "No test suite visible for the hooks themselves",
+    "Bus factor concern - appears to be fully automated with minimal human oversight"
+  ]
+}

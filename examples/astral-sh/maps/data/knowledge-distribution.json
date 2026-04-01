@@ -1,0 +1,494 @@
+{
+  "schema_version": "1.0",
+  "analysis_period_months": 6,
+  "repos": {
+    "python-build-standalone": {
+      "contributors": [
+        {
+          "author": "jjhelmus@gmail.com",
+          "display_name": "Jonathan J. Helmus",
+          "commits": 43,
+          "last_commit": "2026-03-29T14:38:22-05:00",
+          "score": 0.549
+        },
+        {
+          "author": "contact@zanie.dev",
+          "display_name": "Zanie Blue",
+          "commits": 17,
+          "last_commit": "2026-03-24T17:30:45-05:00",
+          "score": 0.388
+        },
+        {
+          "author": "gregory.szorc@gmail.com",
+          "display_name": "Gregory Szorc",
+          "commits": 12,
+          "last_commit": "2026-03-26T19:41:36-07:00",
+          "score": 0.362
+        },
+        {
+          "author": "49699333+dependabot[bot]@users.noreply.github.com",
+          "display_name": "dependabot[bot]",
+          "commits": 10,
+          "last_commit": "2026-03-27T17:42:39-07:00",
+          "score": 0.352
+        },
+        {
+          "author": "zsol.zsol@gmail.com",
+          "display_name": "Zsolt Dollenstein",
+          "commits": 10,
+          "last_commit": "2026-03-27T19:34:08+00:00",
+          "score": 0.352
+        },
+        {
+          "author": "1285242+mrmathematica@users.noreply.github.com",
+          "display_name": "Chongkai Zhu",
+          "commits": 1,
+          "last_commit": "2026-03-18T14:20:09-04:00",
+          "score": 0.284
+        },
+        {
+          "author": "andi.radulescu@gmail.com",
+          "display_name": "Andi Radulescu",
+          "commits": 1,
+          "last_commit": "2026-03-09T18:32:29+02:00",
+          "score": 0.269
+        },
+        {
+          "author": "geofft@ldpreload.com",
+          "display_name": "Geoffrey Thomas",
+          "commits": 12,
+          "last_commit": "2026-01-27T18:24:10-05:00",
+          "score": 0.266
+        },
+        {
+          "author": "tomasz@kramkow.ski",
+          "display_name": "Tomasz Kramkowski",
+          "commits": 1,
+          "last_commit": "2026-02-27T18:38:29+00:00",
+          "score": 0.252
+        },
+        {
+          "author": "70789625+shaanmajid@users.noreply.github.com",
+          "display_name": "Shaan Majid",
+          "commits": 2,
+          "last_commit": "2026-02-17T15:19:31-06:00",
+          "score": 0.242
+        }
+      ],
+      "bus_factor": 2,
+      "sole_experts": []
+    },
+    "ruff-pre-commit": {
+      "contributors": [
+        {
+          "author": "charliermarsh@users.noreply.github.com",
+          "display_name": "charliermarsh",
+          "commits": 23,
+          "last_commit": "2026-03-19T16:28:34+00:00",
+          "score": 0.672
+        },
+        {
+          "author": "49699333+dependabot[bot]@users.noreply.github.com",
+          "display_name": "dependabot[bot]",
+          "commits": 15,
+          "last_commit": "2026-03-30T09:46:48+02:00",
+          "score": 0.553
+        },
+        {
+          "author": "zanieb@users.noreply.github.com",
+          "display_name": "zanieb",
+          "commits": 1,
+          "last_commit": "2026-03-26T19:29:45+00:00",
+          "score": 0.308
+        },
+        {
+          "author": "mxr@users.noreply.github.com",
+          "display_name": "Max R",
+          "commits": 1,
+          "last_commit": "2026-03-19T13:29:54-04:00",
+          "score": 0.297
+        },
+        {
+          "author": "dunossauro@protonmail.com",
+          "display_name": "Eduardo Mendes",
+          "commits": 1,
+          "last_commit": "2026-02-11T11:52:19-03:00",
+          "score": 0.236
+        }
+      ],
+      "bus_factor": 1,
+      "sole_experts": [
+        {
+          "path": ".github/workflows/main.yml",
+          "sole_author": "49699333+dependabot[bot]@users.noreply.github.com",
+          "change_frequency": 15
+        }
+      ]
+    },
+    "ruff-vscode": {
+      "contributors": [
+        {
+          "author": "29139614+renovate[bot]@users.noreply.github.com",
+          "display_name": "renovate[bot]",
+          "commits": 99,
+          "last_commit": "2026-03-30T09:46:10+02:00",
+          "score": 0.916
+        },
+        {
+          "author": "36778786+ntbre@users.noreply.github.com",
+          "display_name": "Brent Westbrook",
+          "commits": 4,
+          "last_commit": "2026-03-19T13:14:27-04:00",
+          "score": 0.305
+        },
+        {
+          "author": "amethyst@n7.gg",
+          "display_name": "Amethyst Reese",
+          "commits": 3,
+          "last_commit": "2026-03-13T15:35:04-07:00",
+          "score": 0.289
+        },
+        {
+          "author": "dylwil3@gmail.com",
+          "display_name": "Dylan",
+          "commits": 1,
+          "last_commit": "2026-01-08T13:46:01-06:00",
+          "score": 0.169
+        },
+        {
+          "author": "william@astral.sh",
+          "display_name": "William Woodruff",
+          "commits": 2,
+          "last_commit": "2025-12-02T14:01:14-05:00",
+          "score": 0.114
+        },
+        {
+          "author": "micha@reiser.io",
+          "display_name": "Micha Reiser",
+          "commits": 2,
+          "last_commit": "2025-11-21T15:07:07+01:00",
+          "score": 0.095
+        },
+        {
+          "author": "daelonsuzuka@gmail.com",
+          "display_name": "David Kincaid",
+          "commits": 1,
+          "last_commit": "2025-11-23T06:02:16-05:00",
+          "score": 0.092
+        }
+      ],
+      "bus_factor": 1,
+      "sole_experts": [
+        {
+          "path": ".github/workflows/ci.yaml",
+          "sole_author": "29139614+renovate[bot]@users.noreply.github.com",
+          "change_frequency": 20
+        },
+        {
+          "path": ".github/workflows/release.yaml",
+          "sole_author": "29139614+renovate[bot]@users.noreply.github.com",
+          "change_frequency": 15
+        },
+        {
+          "path": ".github/workflows/zizmor.yaml",
+          "sole_author": "29139614+renovate[bot]@users.noreply.github.com",
+          "change_frequency": 7
+        }
+      ]
+    },
+    "setup-uv": {
+      "contributors": [
+        {
+          "author": "kevin.stillhammer@gmail.com",
+          "display_name": "Kevin Stillhammer",
+          "commits": 45,
+          "last_commit": "2026-03-31T09:27:10+02:00",
+          "score": 0.545
+        },
+        {
+          "author": "41898282+github-actions[bot]@users.noreply.github.com",
+          "display_name": "github-actions[bot]",
+          "commits": 43,
+          "last_commit": "2026-03-27T07:12:16+01:00",
+          "score": 0.527
+        },
+        {
+          "author": "49699333+dependabot[bot]@users.noreply.github.com",
+          "display_name": "dependabot[bot]",
+          "commits": 26,
+          "last_commit": "2026-03-16T12:37:11+01:00",
+          "score": 0.416
+        },
+        {
+          "author": "zsol.zsol@gmail.com",
+          "display_name": "Zsolt Dollenstein",
+          "commits": 1,
+          "last_commit": "2026-03-16T12:38:17+00:00",
+          "score": 0.28
+        },
+        {
+          "author": "bot.stillhammer@gmail.com",
+          "display_name": "eifinger-bot",
+          "commits": 3,
+          "last_commit": "2026-03-07T11:21:46+01:00",
+          "score": 0.275
+        },
+        {
+          "author": "ludovic@rivosinc.com",
+          "display_name": "Ludovic Henry",
+          "commits": 1,
+          "last_commit": "2026-03-10T15:38:42+01:00",
+          "score": 0.27
+        },
+        {
+          "author": "bugbountypm@gmail.com",
+          "display_name": "pm-dev563",
+          "commits": 1,
+          "last_commit": "2026-02-04T14:38:45+07:00",
+          "score": 0.213
+        },
+        {
+          "author": "3110813+krzema12@users.noreply.github.com",
+          "display_name": "Piotr Krzemi\u0144ski",
+          "commits": 1,
+          "last_commit": "2025-12-19T17:39:19+01:00",
+          "score": 0.135
+        },
+        {
+          "author": "akx@iki.fi",
+          "display_name": "Aarni Koskela",
+          "commits": 1,
+          "last_commit": "2025-12-17T18:04:27+02:00",
+          "score": 0.132
+        },
+        {
+          "author": "william@astral.sh",
+          "display_name": "William Woodruff",
+          "commits": 1,
+          "last_commit": "2025-12-02T02:08:49-05:00",
+          "score": 0.106
+        }
+      ],
+      "bus_factor": 2,
+      "sole_experts": [
+        {
+          "path": "src/download/checksum/known-checksums.ts",
+          "sole_author": "41898282+github-actions[bot]@users.noreply.github.com",
+          "change_frequency": 43
+        },
+        {
+          "path": "package-lock.json",
+          "sole_author": "kevin.stillhammer@gmail.com",
+          "change_frequency": 11
+        },
+        {
+          "path": "package.json",
+          "sole_author": "kevin.stillhammer@gmail.com",
+          "change_frequency": 9
+        },
+        {
+          "path": ".github/workflows/codeql-analysis.yml",
+          "sole_author": "49699333+dependabot[bot]@users.noreply.github.com",
+          "change_frequency": 9
+        },
+        {
+          "path": "docs/customization.md",
+          "sole_author": "kevin.stillhammer@gmail.com",
+          "change_frequency": 5
+        },
+        {
+          "path": "docs/environment-and-tools.md",
+          "sole_author": "kevin.stillhammer@gmail.com",
+          "change_frequency": 5
+        },
+        {
+          "path": "__tests__/utils/inputs.test.ts",
+          "sole_author": "kevin.stillhammer@gmail.com",
+          "change_frequency": 5
+        }
+      ]
+    },
+    "uv": {
+      "contributors": [
+        {
+          "author": "contact@zanie.dev",
+          "display_name": "Zanie Blue",
+          "commits": 387,
+          "last_commit": "2026-03-26T17:04:22-05:00",
+          "score": 0.512
+        },
+        {
+          "author": "29139614+renovate[bot]@users.noreply.github.com",
+          "display_name": "renovate[bot]",
+          "commits": 275,
+          "last_commit": "2026-03-30T09:48:20+02:00",
+          "score": 0.454
+        },
+        {
+          "author": "konstin@mailbox.org",
+          "display_name": "konsti",
+          "commits": 142,
+          "last_commit": "2026-03-31T12:15:44+02:00",
+          "score": 0.38
+        },
+        {
+          "author": "charlie.r.marsh@gmail.com",
+          "display_name": "Charlie Marsh",
+          "commits": 96,
+          "last_commit": "2026-03-31T09:11:41-04:00",
+          "score": 0.354
+        },
+        {
+          "author": "william@astral.sh",
+          "display_name": "William Woodruff",
+          "commits": 59,
+          "last_commit": "2026-03-30T11:03:06-04:00",
+          "score": 0.331
+        },
+        {
+          "author": "zsol.zsol@gmail.com",
+          "display_name": "Zsolt Dollenstein",
+          "commits": 28,
+          "last_commit": "2026-03-31T15:51:27+01:00",
+          "score": 0.315
+        },
+        {
+          "author": "tom@astral.sh",
+          "display_name": "Tomasz Kramkowski",
+          "commits": 34,
+          "last_commit": "2026-03-23T19:28:50+00:00",
+          "score": 0.306
+        },
+        {
+          "author": "41898282+github-actions[bot]@users.noreply.github.com",
+          "display_name": "github-actions[bot]",
+          "commits": 24,
+          "last_commit": "2026-03-26T15:43:53-05:00",
+          "score": 0.305
+        },
+        {
+          "author": "sewi.de@gmail.com",
+          "display_name": "Sebastian Willing",
+          "commits": 1,
+          "last_commit": "2026-03-30T22:34:14+02:00",
+          "score": 0.299
+        },
+        {
+          "author": "aimansingh00@gmail.com",
+          "display_name": "Aiman",
+          "commits": 1,
+          "last_commit": "2026-03-30T14:40:38+05:30",
+          "score": 0.298
+        }
+      ],
+      "bus_factor": 2,
+      "sole_experts": [
+        {
+          "path": "CLAUDE.md",
+          "sole_author": "contact@zanie.dev",
+          "change_frequency": 7
+        },
+        {
+          "path": ".claude/hooks/session-start-web.sh",
+          "sole_author": "contact@zanie.dev",
+          "change_frequency": 6
+        },
+        {
+          "path": "scripts/generate-crate-readmes.py",
+          "sole_author": "contact@zanie.dev",
+          "change_frequency": 6
+        },
+        {
+          "path": "crates/uv-audit/src/service/osv.rs",
+          "sole_author": "william@astral.sh",
+          "change_frequency": 5
+        },
+        {
+          "path": ".claude/settings.json",
+          "sole_author": "contact@zanie.dev",
+          "change_frequency": 5
+        }
+      ]
+    }
+  },
+  "bridge_people": [
+    {
+      "author": "49699333+dependabot[bot]@users.noreply.github.com",
+      "display_name": "dependabot[bot]",
+      "repos": [
+        "python-build-standalone",
+        "ruff-pre-commit",
+        "setup-uv"
+      ],
+      "repo_count": 3
+    },
+    {
+      "author": "zsol.zsol@gmail.com",
+      "display_name": "Zsolt Dollenstein",
+      "repos": [
+        "python-build-standalone",
+        "setup-uv",
+        "uv"
+      ],
+      "repo_count": 3
+    },
+    {
+      "author": "william@astral.sh",
+      "display_name": "William Woodruff",
+      "repos": [
+        "ruff-vscode",
+        "setup-uv",
+        "uv"
+      ],
+      "repo_count": 3
+    }
+  ],
+  "knowledge_islands": [],
+  "owner_mismatches": [
+    {
+      "repo": "ruff-pre-commit",
+      "listed_owner": "astral-sh",
+      "top_contributors": [
+        "charliermarsh",
+        "dependabot[bot]",
+        "zanieb"
+      ]
+    },
+    {
+      "repo": "uv",
+      "listed_owner": "Astral Software Inc.",
+      "top_contributors": [
+        "Zanie Blue",
+        "renovate[bot]",
+        "konsti"
+      ]
+    },
+    {
+      "repo": "python-build-standalone",
+      "listed_owner": "Gregory Szorc <gregory.szorc@gmail.com>",
+      "top_contributors": [
+        "Jonathan J. Helmus",
+        "Zanie Blue",
+        "Gregory Szorc"
+      ]
+    },
+    {
+      "repo": "setup-uv",
+      "listed_owner": "@eifinger (from package.json), astral-sh org",
+      "top_contributors": [
+        "Kevin Stillhammer",
+        "github-actions[bot]",
+        "dependabot[bot]"
+      ]
+    },
+    {
+      "repo": "ruff-vscode",
+      "listed_owner": "astral-sh",
+      "top_contributors": [
+        "renovate[bot]",
+        "Brent Westbrook",
+        "Amethyst Reese"
+      ]
+    }
+  ]
+}
