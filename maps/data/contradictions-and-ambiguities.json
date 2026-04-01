@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "category": "version-conflict",
+      "summary": "Package 'ruff' has different versions across repos: 0.15.7 (ruff-vscode), 0.15.8 (ruff-pre-commit, ruff), 2026.38.0 (ruff-vscode)",
+      "sources": [
+        "audits/ruff-pre-commit.md",
+        "audits/ruff-vscode.md",
+        "audits/ruff.md"
+      ],
+      "repos": [
+        "ruff",
+        "ruff-pre-commit",
+        "ruff-vscode"
+      ],
+      "impact": "medium",
+      "confidence": "high",
+      "details": "ruff-vscode uses ruff==0.15.7; ruff-pre-commit uses ruff==0.15.8; ruff uses ruff==0.15.8; ruff-vscode uses ruff==2026.38.0",
+      "status": "active",
+      "id": "C-001",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "version-conflict",
+      "summary": "ruff-vscode pins ruff==0.15.7 but ruff is at version 0.15.8",
+      "sources": [
+        "audits/ruff-vscode.md",
+        "audits/ruff.md"
+      ],
+      "repos": [
+        "ruff",
+        "ruff-vscode"
+      ],
+      "impact": "medium",
+      "confidence": "high",
+      "details": "Consumer ruff-vscode depends on ruff==0.15.7; producer ruff reports current version as 0.15.8",
+      "status": "active",
+      "id": "C-002",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "ownership-conflict",
+      "summary": "Repos in github.com/astral-sh use different owner formats: 'astral-sh' (ruff-pre-commit), 'astral-sh' (ruff-vscode), 'Astral Software Inc.' (ruff), '@eifinger (from package.json), astral-sh org' (setup-uv), 'Astral Software Inc.' (uv)",
+      "sources": [
+        "audits/ruff-pre-commit.md",
+        "audits/ruff-vscode.md",
+        "audits/ruff.md",
+        "audits/setup-uv.md",
+        "audits/uv.md"
+      ],
+      "repos": [
+        "ruff",
+        "ruff-pre-commit",
+        "ruff-vscode",
+        "setup-uv",
+        "uv"
+      ],
+      "impact": "low",
+      "confidence": "high",
+      "details": "Same GitHub org 'astral-sh' has different ownership strings: @eifinger (from package.json), astral-sh org, Astral Software Inc., astral-sh",
+      "status": "active",
+      "id": "C-003",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "deployment-conflict",
+      "summary": "ruff: Package Details mentions Docker Hub but Artifacts only reference GHCR",
+      "sources": [
+        "audits/ruff.md"
+      ],
+      "repos": [
+        "ruff"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "Package registry field says 'PyPI (primary), npm (WASM), Docker Hub, GitHub Releases', but artifacts reference: @astral-sh/ruff-wasm-*, container deployments, ghcr.io/astral-sh/ruff, github container registry, github releases, https://pypi.org/project/ruff/, multiple platforms, npm, pypi, ruff, web, node.js, bundler targets",
+      "status": "active",
+      "id": "C-004",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "config-conflict",
+      "summary": "Rust toolchain version differs: 1.94 (ruff), 1.94.0 (uv)",
+      "sources": [
+        "audits/ruff.md",
+        "audits/uv.md"
+      ],
+      "repos": [
+        "ruff",
+        "uv"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Different rust toolchain versions may cause build inconsistencies",
+      "status": "active",
+      "id": "C-005",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "deployment-conflict",
+      "summary": "Target 'linux' deployed by different CD systems: github actions (python-build-standalone, ruff-vscode), cargo-dist (uv)",
+      "sources": [
+        "audits/python-build-standalone.md",
+        "audits/ruff-vscode.md",
+        "audits/uv.md"
+      ],
+      "repos": [
+        "python-build-standalone",
+        "ruff-vscode",
+        "uv"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "Multiple repos target 'linux' using different CD pipelines",
+      "status": "active",
+      "id": "C-006",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "deployment-conflict",
+      "summary": "Target 'macos' deployed by different CD systems: github actions (python-build-standalone, ruff-vscode, setup-uv), cargo-dist (uv)",
+      "sources": [
+        "audits/python-build-standalone.md",
+        "audits/ruff-vscode.md",
+        "audits/setup-uv.md",
+        "audits/uv.md"
+      ],
+      "repos": [
+        "python-build-standalone",
+        "ruff-vscode",
+        "setup-uv",
+        "uv"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "Multiple repos target 'macos' using different CD pipelines",
+      "status": "active",
+      "id": "C-007",
+      "detected_date": "2026-03-31"
+    }
+  ]
+}

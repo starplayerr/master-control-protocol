@@ -25,6 +25,8 @@ def find_md_files() -> list[Path]:
             continue
         if rel.name in ("AGENTS.md", "CLAUDE.md"):
             continue
+        if "_meta" in rel.parts:
+            continue
         files.append(md)
     return sorted(files)
 

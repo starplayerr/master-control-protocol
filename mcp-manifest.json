@@ -14,6 +14,7 @@
   ],
   "audit_index": "audit-state.json",
   "audits_dir": "audits/",
+  "maps_data_dir": "maps/data/",
   "diagrams_dir": "diagrams/",
   "prompts_dir": "prompts/",
   "reports_dir": "reports/"

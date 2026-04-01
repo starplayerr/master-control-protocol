@@ -21,3 +21,4 @@ __pycache__/
 
 # Ephemeral outputs
 discovered.json
+facts-cache/

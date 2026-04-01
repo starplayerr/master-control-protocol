@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "master-control-protocol": {
+      "command": ".venv/bin/python",
+      "args": ["scripts/mcp_server.py"],
+      "env": {}
+    }
+  }
+}
