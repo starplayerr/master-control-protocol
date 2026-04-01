@@ -22,3 +22,6 @@ __pycache__/
 # Ephemeral outputs
 discovered.json
 facts-cache/
+
+# Git history analysis clones
+.clones/

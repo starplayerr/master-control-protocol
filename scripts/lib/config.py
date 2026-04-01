@@ -20,6 +20,7 @@ MAPS_DIR = MCP_ROOT / "maps"
 MAPS_DATA_DIR = MCP_ROOT / "maps" / "data"
 FACTS_CACHE_DIR = MCP_ROOT / "facts-cache"
 DIAGRAMS_DIR = MCP_ROOT / "diagrams"
+CLONES_DIR = MCP_ROOT / ".clones"
 
 # ── Secrets ────────────────────────────────────────────────────────────────
 
@@ -37,6 +38,11 @@ DEFAULT_MODEL = {
 DEFAULT_MAX_OUTPUT_TOKENS = 8192
 DEFAULT_CONTEXT_BUDGET = 100_000  # characters
 DEFAULT_CONCURRENCY = 3
+
+# ── Git history analysis ──────────────────────────────────────────────────
+
+DEFAULT_HISTORY_MONTHS = 6
+DEFAULT_COUPLING_WINDOW_HOURS = 48
 
 # ── File reading ───────────────────────────────────────────────────────────
 

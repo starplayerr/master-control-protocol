@@ -1,0 +1,609 @@
+{
+  "schema_version": "1.0",
+  "analysis_period_months": 6,
+  "repos": {
+    "python-build-standalone": {
+      "hotspots": [
+        {
+          "path": "requirements.win.txt",
+          "change_frequency": 4,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 9,
+          "risk": "high",
+          "reason": "High code churn (instability)"
+        },
+        {
+          "path": "requirements.win-arm64.txt",
+          "change_frequency": 3,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 2,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "requirements.dev.txt",
+          "change_frequency": 2,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 9,
+          "risk": "high",
+          "reason": "High code churn (instability)"
+        },
+        {
+          "path": "cpython-unix/patch-tkinter-backport-tcl-9-310.patch",
+          "change_frequency": 2,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 8,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "pythonbuild/mirror.py",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 14,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "tests/test_mirror.py",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 14,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "tests/test_mirror_integration.py",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 14,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "cpython-unix/patch-sem-clockwait-weak-3.10.patch",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 5,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "cpython-unix/patch-sem-clockwait-weak-3.11.patch",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 5,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "cpython-unix/patch-sem-clockwait-weak-3.12.patch",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 5,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        }
+      ],
+      "directories": [
+        {
+          "directory": "cpython-unix",
+          "change_frequency": 50,
+          "authors": 11,
+          "total_churn": 4890
+        },
+        {
+          "directory": "pythonbuild",
+          "change_frequency": 35,
+          "authors": 10,
+          "total_churn": 914
+        },
+        {
+          "directory": "(root)",
+          "change_frequency": 34,
+          "authors": 8,
+          "total_churn": 14702
+        },
+        {
+          "directory": "src",
+          "change_frequency": 29,
+          "authors": 8,
+          "total_churn": 1341
+        },
+        {
+          "directory": ".github",
+          "change_frequency": 24,
+          "authors": 5,
+          "total_churn": 589
+        },
+        {
+          "directory": "cpython-windows",
+          "change_frequency": 8,
+          "authors": 3,
+          "total_churn": 135
+        },
+        {
+          "directory": "docs",
+          "change_frequency": 5,
+          "authors": 4,
+          "total_churn": 163
+        },
+        {
+          "directory": "tests",
+          "change_frequency": 1,
+          "authors": 1,
+          "total_churn": 277
+        }
+      ]
+    },
+    "ruff-pre-commit": {
+      "hotspots": [
+        {
+          "path": "pyproject.toml",
+          "change_frequency": 24,
+          "authors": 2,
+          "churn_rate": "low",
+          "coupling_fan_out": 1,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Only 2 authors for a frequently-changed file"
+        },
+        {
+          "path": "README.md",
+          "change_frequency": 26,
+          "authors": 4,
+          "churn_rate": "low",
+          "coupling_fan_out": 1,
+          "risk": "medium",
+          "reason": "High change frequency"
+        },
+        {
+          "path": ".github/workflows/main.yml",
+          "change_frequency": 15,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 0,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        }
+      ],
+      "directories": [
+        {
+          "directory": "(root)",
+          "change_frequency": 26,
+          "authors": 4,
+          "total_churn": 376
+        },
+        {
+          "directory": ".github",
+          "change_frequency": 15,
+          "authors": 1,
+          "total_churn": 34
+        }
+      ]
+    },
+    "ruff-vscode": {
+      "hotspots": [
+        {
+          "path": ".github/workflows/ci.yaml",
+          "change_frequency": 20,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 2,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "package-lock.json",
+          "change_frequency": 72,
+          "authors": 4,
+          "churn_rate": "medium",
+          "coupling_fan_out": 8,
+          "risk": "medium",
+          "reason": "High change frequency"
+        },
+        {
+          "path": ".github/workflows/release.yaml",
+          "change_frequency": 15,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 5,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "package.json",
+          "change_frequency": 14,
+          "authors": 6,
+          "churn_rate": "low",
+          "coupling_fan_out": 9,
+          "risk": "medium",
+          "reason": "Normal activity"
+        },
+        {
+          "path": ".github/workflows/zizmor.yaml",
+          "change_frequency": 7,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 2,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "src/common/utilities.ts",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 1,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        },
+        {
+          "path": ".github/renovate.json5",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 0,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "justfile",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 0,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "tsconfig.json",
+          "change_frequency": 1,
+          "authors": 1,
+          "churn_rate": "low",
+          "coupling_fan_out": 3,
+          "risk": "medium",
+          "reason": "Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "README.md",
+          "change_frequency": 8,
+          "authors": 4,
+          "churn_rate": "low",
+          "coupling_fan_out": 6,
+          "risk": "low",
+          "reason": "Normal activity"
+        }
+      ],
+      "directories": [
+        {
+          "directory": "(root)",
+          "change_frequency": 78,
+          "authors": 7,
+          "total_churn": 4306
+        },
+        {
+          "directory": ".github",
+          "change_frequency": 35,
+          "authors": 2,
+          "total_churn": 271
+        },
+        {
+          "directory": "src",
+          "change_frequency": 1,
+          "authors": 1,
+          "total_churn": 4
+        }
+      ]
+    },
+    "setup-uv": {
+      "hotspots": [
+        {
+          "path": "dist/setup/index.js",
+          "change_frequency": 67,
+          "authors": 9,
+          "churn_rate": "high",
+          "coupling_fan_out": 58,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "dist/update-known-versions/index.js",
+          "change_frequency": 45,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 19,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Only 2 authors for a frequently-changed file; High code churn (instability)"
+        },
+        {
+          "path": "src/download/checksum/known-checksums.ts",
+          "change_frequency": 43,
+          "authors": 1,
+          "churn_rate": "medium",
+          "coupling_fan_out": 6,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Single author \u2014 bus factor risk"
+        },
+        {
+          "path": "version-manifest.json",
+          "change_frequency": 39,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 29,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Only 2 authors for a frequently-changed file; High code churn (instability)"
+        },
+        {
+          "path": "dist/save-cache/index.js",
+          "change_frequency": 20,
+          "authors": 6,
+          "churn_rate": "high",
+          "coupling_fan_out": 55,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "package-lock.json",
+          "change_frequency": 11,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 44,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "dist/update-known-checksums/index.cjs",
+          "change_frequency": 7,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 34,
+          "risk": "high",
+          "reason": "High code churn (instability)"
+        },
+        {
+          "path": "__tests__/utils/inputs.test.ts",
+          "change_frequency": 5,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 30,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        },
+        {
+          "path": "__tests__/download/download-version.test.ts",
+          "change_frequency": 4,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 44,
+          "risk": "high",
+          "reason": "High code churn (instability)"
+        },
+        {
+          "path": "dist/save-cache/index.cjs",
+          "change_frequency": 3,
+          "authors": 1,
+          "churn_rate": "high",
+          "coupling_fan_out": 27,
+          "risk": "high",
+          "reason": "Single author \u2014 bus factor risk; High code churn (instability)"
+        }
+      ],
+      "directories": [
+        {
+          "directory": "dist",
+          "change_frequency": 77,
+          "authors": 10,
+          "total_churn": 844993
+        },
+        {
+          "directory": "src",
+          "change_frequency": 70,
+          "authors": 10,
+          "total_churn": 5201
+        },
+        {
+          "directory": "(root)",
+          "change_frequency": 69,
+          "authors": 8,
+          "total_churn": 44514
+        },
+        {
+          "directory": ".github",
+          "change_frequency": 59,
+          "authors": 8,
+          "total_churn": 1664
+        },
+        {
+          "directory": "__tests__",
+          "change_frequency": 12,
+          "authors": 2,
+          "total_churn": 2229
+        },
+        {
+          "directory": "docs",
+          "change_frequency": 11,
+          "authors": 2,
+          "total_churn": 730
+        },
+        {
+          "directory": "scripts",
+          "change_frequency": 1,
+          "authors": 1,
+          "total_churn": 33
+        },
+        {
+          "directory": ".agents",
+          "change_frequency": 1,
+          "authors": 1,
+          "total_churn": 48
+        }
+      ]
+    },
+    "uv": {
+      "hotspots": [
+        {
+          "path": "crates/uv/tests/it/lock.rs",
+          "change_frequency": 44,
+          "authors": 9,
+          "churn_rate": "high",
+          "coupling_fan_out": 410,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "crates/uv/tests/it/edit.rs",
+          "change_frequency": 30,
+          "authors": 10,
+          "churn_rate": "high",
+          "coupling_fan_out": 504,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "docs/reference/cli.md",
+          "change_frequency": 30,
+          "authors": 18,
+          "churn_rate": "high",
+          "coupling_fan_out": 138,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "crates/uv-python/download-metadata.json",
+          "change_frequency": 27,
+          "authors": 4,
+          "churn_rate": "high",
+          "coupling_fan_out": 26,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "crates/uv/tests/it/pip_compile.rs",
+          "change_frequency": 25,
+          "authors": 10,
+          "churn_rate": "high",
+          "coupling_fan_out": 352,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": ".github/workflows/check-docs.yml",
+          "change_frequency": 24,
+          "authors": 2,
+          "churn_rate": "low",
+          "coupling_fan_out": 40,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Only 2 authors for a frequently-changed file"
+        },
+        {
+          "path": ".github/workflows/check-fmt.yml",
+          "change_frequency": 21,
+          "authors": 2,
+          "churn_rate": "low",
+          "coupling_fan_out": 25,
+          "risk": "high",
+          "reason": "High churn, low author count \u2014 knowledge silo; Only 2 authors for a frequently-changed file"
+        },
+        {
+          "path": "crates/uv/tests/it/export.rs",
+          "change_frequency": 21,
+          "authors": 9,
+          "churn_rate": "high",
+          "coupling_fan_out": 122,
+          "risk": "high",
+          "reason": "High change frequency; High code churn (instability)"
+        },
+        {
+          "path": "uv.lock",
+          "change_frequency": 9,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 170,
+          "risk": "high",
+          "reason": "High code churn (instability)"
+        },
+        {
+          "path": "crates/uv-fs/src/link.rs",
+          "change_frequency": 6,
+          "authors": 2,
+          "churn_rate": "high",
+          "coupling_fan_out": 20,
+          "risk": "high",
+          "reason": "High code churn (instability)"
+        }
+      ],
+      "directories": [
+        {
+          "directory": "crates",
+          "change_frequency": 668,
+          "authors": 96,
+          "total_churn": 240105
+        },
+        {
+          "directory": "(root)",
+          "change_frequency": 440,
+          "authors": 39,
+          "total_churn": 21493
+        },
+        {
+          "directory": ".github",
+          "change_frequency": 243,
+          "authors": 15,
+          "total_churn": 10346
+        },
+        {
+          "directory": "docs",
+          "change_frequency": 174,
+          "authors": 46,
+          "total_churn": 18275
+        },
+        {
+          "directory": "scripts",
+          "change_frequency": 54,
+          "authors": 8,
+          "total_churn": 3617
+        },
+        {
+          "directory": "test",
+          "change_frequency": 11,
+          "authors": 3,
+          "total_churn": 110
+        },
+        {
+          "directory": ".claude",
+          "change_frequency": 11,
+          "authors": 1,
+          "total_churn": 194
+        },
+        {
+          "directory": ".config",
+          "change_frequency": 4,
+          "authors": 2,
+          "total_churn": 60
+        },
+        {
+          "directory": "python",
+          "change_frequency": 3,
+          "authors": 2,
+          "total_churn": 6
+        },
+        {
+          "directory": "changelogs",
+          "change_frequency": 3,
+          "authors": 2,
+          "total_churn": 2202
+        }
+      ]
+    }
+  }
+}

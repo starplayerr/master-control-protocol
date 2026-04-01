@@ -138,6 +138,205 @@
       "status": "active",
       "id": "C-007",
       "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows python-build-standalone and ruff-pre-commit co-change 103 times (coupling score: 1.0) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "python-build-standalone",
+        "ruff-pre-commit"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 103 co-changes. Shared authors: 49699333+dependabot[bot]@users.noreply.github.com",
+      "status": "active",
+      "id": "C-008",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows python-build-standalone and setup-uv co-change 116 times (coupling score: 1.0) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "python-build-standalone",
+        "setup-uv"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 116 co-changes. Shared authors: 49699333+dependabot[bot]@users.noreply.github.com, zsol.zsol@gmail.com",
+      "status": "active",
+      "id": "C-009",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows ruff-pre-commit and setup-uv co-change 40 times (coupling score: 1.0) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "ruff-pre-commit",
+        "setup-uv"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 40 co-changes. Shared authors: 49699333+dependabot[bot]@users.noreply.github.com",
+      "status": "active",
+      "id": "C-010",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows ruff-vscode and uv co-change 112 times (coupling score: 1.0) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "ruff-vscode",
+        "uv"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 112 co-changes. Shared authors: 29139614+renovate[bot]@users.noreply.github.com, william@astral.sh",
+      "status": "active",
+      "id": "C-011",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows ruff-vscode and setup-uv co-change 106 times (coupling score: 0.97) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "ruff-vscode",
+        "setup-uv"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 106 co-changes. Shared authors: william@astral.sh",
+      "status": "active",
+      "id": "C-012",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows python-build-standalone and ruff-vscode co-change 77 times (coupling score: 0.69) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "python-build-standalone",
+        "ruff-vscode"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 77 co-changes. Shared authors: none",
+      "status": "active",
+      "id": "C-013",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "undocumented-dependency",
+      "summary": "Git history shows ruff-pre-commit and ruff-vscode co-change 22 times (coupling score: 0.54) but no documented dependency exists",
+      "sources": [
+        "maps/data/co-change-coupling.json"
+      ],
+      "repos": [
+        "ruff-pre-commit",
+        "ruff-vscode"
+      ],
+      "impact": "medium",
+      "confidence": "medium",
+      "details": "Within a 48h window over 6 months, these repos had 22 co-changes. Shared authors: none",
+      "status": "active",
+      "id": "C-014",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "owner-mismatch",
+      "summary": "ruff-pre-commit: listed owner 'astral-sh' does not appear in top git contributors (charliermarsh, dependabot[bot], zanieb)",
+      "sources": [
+        "maps/data/knowledge-distribution.json"
+      ],
+      "repos": [
+        "ruff-pre-commit"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "INVENTORY.md lists 'astral-sh' as owner, but the top committers by volume and recency are: charliermarsh, dependabot[bot], zanieb",
+      "status": "active",
+      "id": "C-015",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "owner-mismatch",
+      "summary": "uv: listed owner 'Astral Software Inc.' does not appear in top git contributors (Zanie Blue, renovate[bot], konsti)",
+      "sources": [
+        "maps/data/knowledge-distribution.json"
+      ],
+      "repos": [
+        "uv"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "INVENTORY.md lists 'Astral Software Inc.' as owner, but the top committers by volume and recency are: Zanie Blue, renovate[bot], konsti",
+      "status": "active",
+      "id": "C-016",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "owner-mismatch",
+      "summary": "python-build-standalone: listed owner 'Gregory Szorc <gregory.szorc@gmail.com>' does not appear in top git contributors (Jonathan J. Helmus, Zanie Blue, Gregory Szorc)",
+      "sources": [
+        "maps/data/knowledge-distribution.json"
+      ],
+      "repos": [
+        "python-build-standalone"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "INVENTORY.md lists 'Gregory Szorc <gregory.szorc@gmail.com>' as owner, but the top committers by volume and recency are: Jonathan J. Helmus, Zanie Blue, Gregory Szorc",
+      "status": "active",
+      "id": "C-017",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "owner-mismatch",
+      "summary": "setup-uv: listed owner '@eifinger (from package.json), astral-sh org' does not appear in top git contributors (Kevin Stillhammer, github-actions[bot], dependabot[bot])",
+      "sources": [
+        "maps/data/knowledge-distribution.json"
+      ],
+      "repos": [
+        "setup-uv"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "INVENTORY.md lists '@eifinger (from package.json), astral-sh org' as owner, but the top committers by volume and recency are: Kevin Stillhammer, github-actions[bot], dependabot[bot]",
+      "status": "active",
+      "id": "C-018",
+      "detected_date": "2026-03-31"
+    },
+    {
+      "category": "owner-mismatch",
+      "summary": "ruff-vscode: listed owner 'astral-sh' does not appear in top git contributors (renovate[bot], Brent Westbrook, Amethyst Reese)",
+      "sources": [
+        "maps/data/knowledge-distribution.json"
+      ],
+      "repos": [
+        "ruff-vscode"
+      ],
+      "impact": "low",
+      "confidence": "medium",
+      "details": "INVENTORY.md lists 'astral-sh' as owner, but the top committers by volume and recency are: renovate[bot], Brent Westbrook, Amethyst Reese",
+      "status": "active",
+      "id": "C-019",
+      "detected_date": "2026-03-31"
     }
   ]
 }
