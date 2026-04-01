@@ -1,41 +1,46 @@
 # Master Control Protocol
 
-A structured memory and reasoning layer for multi-repo platforms. MCP audits repositories, synthesizes cross-cutting findings into platform maps, tracks what it knows and what it doesn't, and uses its own output to improve over time.
+The architectural memory layer for multi-repo platforms.
 
-## Why
+Every engineering org rebuilds the same understanding from scratch — which repo owns what, what depends on what, where config actually lives, what's stale, what contradicts what. This knowledge exists in people's heads, scattered docs, and Slack threads. When someone leaves, it leaves with them. When an AI agent needs it, it doesn't exist in any queryable form.
 
-In platforms spanning dozens of repositories, the bottleneck is rarely implementation skill. It's **orientation** — knowing which repo owns a behavior, where configuration actually lives, what depends on what, and what's stale or contradictory.
+MCP fixes this. It audits repositories programmatically, cross-references findings across the ecosystem, detects contradictions and stale assumptions that no single-repo tool can see, and compounds its understanding with every run. The output is a structured, queryable, continuously maintained memory of how your platform actually works — for both humans and AI agents.
 
-Traditional documentation is scattered, repo-local, and decays the moment it's written. MCP replaces it with a system that audits repositories programmatically, cross-references findings across the ecosystem, and compounds its understanding with every run.
+## What It Found
 
-## What It Does
-
-MCP runs a pipeline:
-
-1. **Discover** — Enumerate repos in a GitHub org, detect types, track metadata
-2. **Audit** — Clone each repo, gather context, call an LLM with a type-specific prompt, produce a structured Markdown report
-3. **Synthesize** — Cross-reference all audits to build platform maps: dependency graphs, deployment flows, contradictions, stale assumptions, simplification candidates, missing documentation
-4. **Analyze history** — Mine git logs for co-change coupling, knowledge silos, hotspots, and temporal patterns
-5. **Capture feedback** — After each audit, automatically detect prompt gaps, cross-repo insights, and unknown fields; optionally collect human corrections
-6. **Evolve** — Score prompt effectiveness, propose improvements, grade map quality, and track a composite platform understanding score over time
-
-Every step feeds the next. Audits improve maps. Maps reveal what audits miss. Feedback improves prompts. Better prompts produce better audits.
-
-## Current State
-
-Running against [astral-sh](https://github.com/astral-sh) as a live testbed:
+Running against [astral-sh](https://github.com/astral-sh) (ruff, uv, python-build-standalone, and related repos):
 
 | Metric | Value |
 |---|---|
-| Repos tracked | 10 |
-| Audits complete | 7 (70% coverage) |
-| Contradictions found | 19 |
-| Stale assumptions | 3 |
+| Repos audited | 7 of 10 (70% coverage) |
+| Cross-repo contradictions detected | 19 |
+| Stale assumptions identified | 3 |
 | Simplification candidates | 7 |
-| Prompt completeness | 97.9% (library prompt) |
+| Undocumented co-change couplings | 10 |
+| Hotspot files tracked | 43 |
+| Low bus-factor repos | 2 |
+| Prompt completeness | 97.9% |
 | Platform understanding score | 55.4% |
 
-The platform understanding score is a composite of audit coverage, prompt effectiveness, map quality, contradiction resolution, and feedback maturity. It goes up as the system learns.
+Findings include version skew between ruff and its VS Code extension, undocumented coupling between repos that always change together, ownership mismatches between audit metadata and actual git contributors, and CI/CD template consolidation opportunities across 4 repos. None of these are visible from any single repository.
+
+## What This Is Not
+
+MCP is not a service catalog (Backstage, Cortex), not a code search engine (Sourcegraph), and not an AI coding assistant (Copilot, Cursor). It's the persistent architectural memory that makes all of those tools more effective. Service catalogs track what exists. Code search finds where things are. AI assistants help you write code. MCP tells you — and them — how the platform actually fits together, where it's broken, and what to do about it.
+
+## How It Works
+
+MCP runs four pipelines that feed each other:
+
+**Audit** — Discover repos in a GitHub org, clone them, send context to an LLM with type-specific prompts (infrastructure, service, library, frontend), produce structured Markdown reports. Cache-aware: only re-audits when code or prompts change.
+
+**Synthesize** — Cross-reference all audit reports to build platform maps: dependency graphs, deployment flows, source-of-truth registries, contradiction logs, stale assumption registers, and simplification candidates. This is the layer that doesn't exist anywhere else.
+
+**Analyze history** — Mine git logs across repos for co-change coupling, knowledge silos, change hotspots, bus-factor risks, and temporal patterns. Surfaces dependencies that aren't declared in code.
+
+**Feedback** — Score prompt effectiveness, detect gaps, propose prompt improvements, grade map quality, and track a composite platform understanding score that rises as the system learns.
+
+Every step feeds the next. Audits improve maps. Maps reveal what audits miss. Feedback improves prompts. Better prompts produce better audits.
 
 ## Quick Start
 
