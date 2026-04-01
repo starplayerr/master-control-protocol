@@ -1,0 +1,181 @@
+{
+  "maps/candidate-simplifications.md": {
+    "coverage": 0.6,
+    "freshness": "current",
+    "last_scored": "2026-04-01T00:38:13.906645+00:00",
+    "open_items": 7,
+    "overall_quality": "D",
+    "priority_improvement": false,
+    "quality_score": 0.53,
+    "repos_covered": [
+      "python-build-standalone",
+      "ruff",
+      "ruff-pre-commit",
+      "ruff-vscode",
+      "setup-uv",
+      "uv"
+    ],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  },
+  "maps/contradictions-and-ambiguities.md": {
+    "coverage": 0.6,
+    "freshness": "current",
+    "last_scored": "2026-04-01T00:38:13.905820+00:00",
+    "open_items": 19,
+    "overall_quality": "D",
+    "priority_improvement": false,
+    "quality_score": 0.53,
+    "repos_covered": [
+      "python-build-standalone",
+      "ruff",
+      "ruff-pre-commit",
+      "ruff-vscode",
+      "setup-uv",
+      "uv"
+    ],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  },
+  "maps/dependency-matrix.md": {
+    "coverage": 0.0,
+    "freshness": "draft",
+    "last_scored": "2026-04-01T00:38:13.907369+00:00",
+    "open_items": 7,
+    "overall_quality": "F",
+    "priority_improvement": true,
+    "quality_score": 0.1,
+    "repos_covered": [],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol",
+      "python-build-standalone",
+      "ruff",
+      "ruff-pre-commit",
+      "ruff-vscode",
+      "setup-uv",
+      "uv"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  },
+  "maps/deployment-flow.md": {
+    "coverage": 0.0,
+    "freshness": "draft",
+    "last_scored": "2026-04-01T00:38:13.907709+00:00",
+    "open_items": 0,
+    "overall_quality": "F",
+    "priority_improvement": false,
+    "quality_score": 0.1,
+    "repos_covered": [],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol",
+      "python-build-standalone",
+      "ruff",
+      "ruff-pre-commit",
+      "ruff-vscode",
+      "setup-uv",
+      "uv"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  },
+  "maps/missing-docs.md": {
+    "coverage": 0.2,
+    "freshness": "draft",
+    "last_scored": "2026-04-01T00:38:13.906962+00:00",
+    "open_items": 2,
+    "overall_quality": "F",
+    "priority_improvement": false,
+    "quality_score": 0.16,
+    "repos_covered": [
+      "ruff-pre-commit",
+      "ruff-vscode"
+    ],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol",
+      "python-build-standalone",
+      "ruff",
+      "setup-uv",
+      "uv"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  },
+  "maps/source-of-truth.md": {
+    "coverage": 0.0,
+    "freshness": "draft",
+    "last_scored": "2026-04-01T00:38:13.908003+00:00",
+    "open_items": 0,
+    "overall_quality": "F",
+    "priority_improvement": false,
+    "quality_score": 0.1,
+    "repos_covered": [],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol",
+      "python-build-standalone",
+      "ruff",
+      "ruff-pre-commit",
+      "ruff-vscode",
+      "setup-uv",
+      "uv"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  },
+  "maps/stale-assumptions.md": {
+    "coverage": 0.3,
+    "freshness": "current",
+    "last_scored": "2026-04-01T00:38:13.906303+00:00",
+    "open_items": 3,
+    "overall_quality": "F",
+    "priority_improvement": false,
+    "quality_score": 0.44,
+    "repos_covered": [
+      "ruff",
+      "ruff-vscode",
+      "setup-uv"
+    ],
+    "repos_missing": [
+      "example-eks-cluster",
+      "example-jupyter-extension",
+      "example-sagemaker-pipelines",
+      "master-control-protocol",
+      "python-build-standalone",
+      "ruff-pre-commit",
+      "uv"
+    ],
+    "resolution_rate": 0.0,
+    "resolved_items": 0,
+    "verification_rate": 0.0
+  }
+}

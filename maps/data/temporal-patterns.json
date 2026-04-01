@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "analysis_period_months": 6,
+  "dormancy_threshold_months": 3,
+  "repos": {
+    "python-build-standalone": {
+      "cadence": {
+        "commits_per_week_avg": 5.2,
+        "commits_per_week_median": 4,
+        "active_weeks": 23,
+        "total_commits": 119
+      },
+      "bursts": [
+        {
+          "week": "2026-W13",
+          "commits": 26,
+          "threshold": 16.0,
+          "z_score": 3.9
+        }
+      ],
+      "day_of_week": {
+        "Monday": 14.3,
+        "Tuesday": 34.5,
+        "Wednesday": 19.3,
+        "Thursday": 13.4,
+        "Friday": 16.0,
+        "Saturday": 0.0,
+        "Sunday": 2.5
+      }
+    },
+    "ruff-pre-commit": {
+      "cadence": {
+        "commits_per_week_avg": 1.7,
+        "commits_per_week_median": 2.0,
+        "active_weeks": 24,
+        "total_commits": 41
+      },
+      "bursts": [],
+      "day_of_week": {
+        "Monday": 34.1,
+        "Tuesday": 4.9,
+        "Wednesday": 2.4,
+        "Thursday": 46.3,
+        "Friday": 9.8,
+        "Saturday": 0.0,
+        "Sunday": 2.4
+      }
+    },
+    "ruff-vscode": {
+      "cadence": {
+        "commits_per_week_avg": 5.3,
+        "commits_per_week_median": 5,
+        "active_weeks": 21,
+        "total_commits": 112
+      },
+      "bursts": [
+        {
+          "week": "2026-W04",
+          "commits": 12,
+          "threshold": 11.6,
+          "z_score": 2.1
+        }
+      ],
+      "day_of_week": {
+        "Monday": 75.9,
+        "Tuesday": 5.4,
+        "Wednesday": 0.0,
+        "Thursday": 2.7,
+        "Friday": 2.7,
+        "Saturday": 0.0,
+        "Sunday": 13.4
+      }
+    },
+    "setup-uv": {
+      "cadence": {
+        "commits_per_week_avg": 5.3,
+        "commits_per_week_median": 4.0,
+        "active_weeks": 24,
+        "total_commits": 128
+      },
+      "bursts": [
+        {
+          "week": "2025-W41",
+          "commits": 16,
+          "threshold": 13.4,
+          "z_score": 2.6
+        },
+        {
+          "week": "2026-W06",
+          "commits": 14,
+          "threshold": 13.4,
+          "z_score": 2.2
+        }
+      ],
+      "day_of_week": {
+        "Monday": 8.6,
+        "Tuesday": 24.2,
+        "Wednesday": 12.5,
+        "Thursday": 9.4,
+        "Friday": 19.5,
+        "Saturday": 17.2,
+        "Sunday": 8.6
+      }
+    },
+    "uv": {
+      "cadence": {
+        "commits_per_week_avg": 45.5,
+        "commits_per_week_median": 47,
+        "active_weeks": 27,
+        "total_commits": 1229
+      },
+      "bursts": [
+        {
+          "week": "2026-W03",
+          "commits": 96,
+          "threshold": 89.7,
+          "z_score": 2.3
+        }
+      ],
+      "day_of_week": {
+        "Monday": 24.7,
+        "Tuesday": 17.5,
+        "Wednesday": 14.0,
+        "Thursday": 15.9,
+        "Friday": 16.7,
+        "Saturday": 3.3,
+        "Sunday": 7.9
+      }
+    }
+  },
+  "dormant_repos": [],
+  "cross_repo_waves": [
+    {
+      "source_repo": "ruff-vscode",
+      "week": "2026-W04",
+      "follower_repos": [
+        "uv"
+      ]
+    },
+    {
+      "source_repo": "uv",
+      "week": "2026-W03",
+      "follower_repos": [
+        "ruff-vscode"
+      ]
+    }
+  ],
+  "weekend_deployers": [
+    {
+      "repo": "setup-uv",
+      "weekend_pct": 25.8
+    }
+  ]
+}

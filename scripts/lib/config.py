@@ -20,6 +20,17 @@ MAPS_DIR = MCP_ROOT / "maps"
 MAPS_DATA_DIR = MCP_ROOT / "maps" / "data"
 FACTS_CACHE_DIR = MCP_ROOT / "facts-cache"
 DIAGRAMS_DIR = MCP_ROOT / "diagrams"
+CLONES_DIR = MCP_ROOT / ".clones"
+
+# ── Feedback loop ─────────────────────────────────────────────────────────
+
+FEEDBACK_DIR = MCP_ROOT / "feedback"
+CAPTURE_LOG_PATH = FEEDBACK_DIR / "capture-log.jsonl"
+PROMPT_SCORES_PATH = FEEDBACK_DIR / "prompt-scores.json"
+MAP_QUALITY_PATH = FEEDBACK_DIR / "map-quality.json"
+PROMPT_PROPOSALS_PATH = FEEDBACK_DIR / "prompt-proposals.md"
+DASHBOARD_PATH = FEEDBACK_DIR / "dashboard.json"
+QUALITY_HISTORY_PATH = FEEDBACK_DIR / "quality-history.jsonl"
 
 # ── Secrets ────────────────────────────────────────────────────────────────
 
@@ -37,6 +48,11 @@ DEFAULT_MODEL = {
 DEFAULT_MAX_OUTPUT_TOKENS = 8192
 DEFAULT_CONTEXT_BUDGET = 100_000  # characters
 DEFAULT_CONCURRENCY = 3
+
+# ── Git history analysis ──────────────────────────────────────────────────
+
+DEFAULT_HISTORY_MONTHS = 6
+DEFAULT_COUPLING_WINDOW_HOURS = 48
 
 # ── File reading ───────────────────────────────────────────────────────────
 

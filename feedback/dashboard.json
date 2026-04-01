@@ -1,0 +1,126 @@
+{
+  "audit_summary": {
+    "current": 7,
+    "stale": 0,
+    "total_repos": 7
+  },
+  "audit_timeline": [
+    {
+      "audits": 6,
+      "month": "2026-03"
+    },
+    {
+      "audits": 1,
+      "month": "2026-04"
+    }
+  ],
+  "capture_timeline": [
+    {
+      "cross-repo-insight": 9,
+      "month": "2026-04",
+      "prompt-gap": 1,
+      "total": 10
+    }
+  ],
+  "contradictions": {
+    "open": 19,
+    "resolved": 0,
+    "total": 19
+  },
+  "feedback_loop_health": {
+    "corrections": 0,
+    "cross_repo_insights": 9,
+    "prompt_gaps": 1,
+    "total_captures": 5,
+    "total_findings": 10
+  },
+  "generated_at": "2026-04-01T00:38:13.910454+00:00",
+  "map_quality": {
+    "maps/candidate-simplifications.md": {
+      "coverage": 0.6,
+      "freshness": "current",
+      "grade": "D",
+      "score": 0.53
+    },
+    "maps/contradictions-and-ambiguities.md": {
+      "coverage": 0.6,
+      "freshness": "current",
+      "grade": "D",
+      "score": 0.53
+    },
+    "maps/dependency-matrix.md": {
+      "coverage": 0.0,
+      "freshness": "draft",
+      "grade": "F",
+      "score": 0.1
+    },
+    "maps/deployment-flow.md": {
+      "coverage": 0.0,
+      "freshness": "draft",
+      "grade": "F",
+      "score": 0.1
+    },
+    "maps/missing-docs.md": {
+      "coverage": 0.2,
+      "freshness": "draft",
+      "grade": "F",
+      "score": 0.16
+    },
+    "maps/source-of-truth.md": {
+      "coverage": 0.0,
+      "freshness": "draft",
+      "grade": "F",
+      "score": 0.1
+    },
+    "maps/stale-assumptions.md": {
+      "coverage": 0.3,
+      "freshness": "current",
+      "grade": "F",
+      "score": 0.44
+    }
+  },
+  "platform_understanding_score": 0.554,
+  "prompt_effectiveness": {
+    "prompts/default.md": {
+      "audits_run": 1,
+      "avg_completeness": 0.0,
+      "contradiction_discovery_rate": 0.0,
+      "correction_rate": 0.0,
+      "gap_rate": 0.0,
+      "last_scored": "2026-04-01T00:38:13.909370+00:00",
+      "low_completeness_fields": [],
+      "repos": [
+        "master-control-protocol"
+      ],
+      "trend": "insufficient-data"
+    },
+    "prompts/library.md": {
+      "audits_run": 6,
+      "avg_completeness": 0.979,
+      "contradiction_discovery_rate": 1.0,
+      "correction_rate": 0.0,
+      "gap_rate": 0.167,
+      "last_scored": "2026-04-01T00:38:13.909434+00:00",
+      "low_completeness_fields": [],
+      "repos": [
+        "python-build-standalone",
+        "ruff",
+        "ruff-pre-commit",
+        "ruff-vscode",
+        "setup-uv",
+        "uv"
+      ],
+      "trend": "stable"
+    }
+  },
+  "simplifications": {
+    "acted_on": 0,
+    "completion_rate": 0.0,
+    "total": 7
+  },
+  "stale_assumptions": {
+    "open": 3,
+    "resolved": 0,
+    "total": 3
+  }
+}

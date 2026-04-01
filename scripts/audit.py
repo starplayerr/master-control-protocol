@@ -16,6 +16,7 @@ from lib.context import cleanup_clone, gather_context, get_head_sha, shallow_clo
 from lib.inventory import parse_audit_report, update_inventory
 from lib.llm import LLMClient
 from lib.prompts import select_prompt
+from feedback.capture import run_capture
 
 
 def _build_frontmatter(repo_name: str, timestamp: str) -> str:
@@ -62,6 +63,7 @@ def run_audit(
     model: str | None = None,
     context_budget: int = config.DEFAULT_CONTEXT_BUDGET,
     force: bool = False,
+    interactive_capture: bool = False,
 ) -> Path | None:
     """Run a full audit on a single repo. Returns the path to the audit file, or None if skipped."""
     # Derive repo name from URL
@@ -146,6 +148,15 @@ def run_audit(
         )
         click.echo(f"  Updated INVENTORY.md")
 
+        # Post-audit knowledge capture
+        try:
+            capture_result = run_capture(output_path, interactive=interactive_capture)
+            n_findings = len(capture_result.get("captures", []))
+            if n_findings:
+                click.echo(f"  Feedback captured: {n_findings} automated findings")
+        except Exception as e:
+            click.echo(f"  Warning: feedback capture failed: {e}", err=True)
+
         return output_path
 
     finally:
@@ -161,7 +172,8 @@ def run_audit(
 @click.option("--model", default=None, help="Specific model name")
 @click.option("--context-budget", default=config.DEFAULT_CONTEXT_BUDGET, type=int, help="Max context chars")
 @click.option("--force", is_flag=True, help="Re-audit even if current")
-def main(repo: str, branch: str | None, prompt_override: str | None, provider: str, model: str | None, context_budget: int, force: bool):
+@click.option("--interactive-capture", is_flag=True, help="Prompt for manual feedback after audit")
+def main(repo: str, branch: str | None, prompt_override: str | None, provider: str, model: str | None, context_budget: int, force: bool, interactive_capture: bool):
     """Run a structured audit on a single repository."""
     result = run_audit(
         repo_url=repo,
@@ -171,6 +183,7 @@ def main(repo: str, branch: str | None, prompt_override: str | None, provider: s
         model=model,
         context_budget=context_budget,
         force=force,
+        interactive_capture=interactive_capture,
     )
     if result:
         click.echo(f"\nAudit complete: {result}")
