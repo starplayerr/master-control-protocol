@@ -8,9 +8,22 @@ for multi-repo platforms. It is not a codebase — it is a knowledge system.
 It contains:
 - A forkable template for auditing any GitHub org
 - Automation scripts for discovery, auditing, synthesis, and feedback (scripts/)
-- LLM prompt templates for automated audits (prompts/)
+- LLM prompt templates: automated pipeline prompts (`prompts/default.md`, etc.) and a **deep manual audit** template (`prompts/deep-audit.md`)
 - Empty template files for catalogs, maps, and reports
 - A complete example run against astral-sh (examples/astral-sh/)
+
+## .mcpignore and audit safety
+
+Patterns use **gitignore-style** rules (`**`, `*`, `!` negation, etc.), implemented via `pathspec` in `scripts/lib/context.py`.
+
+When `gather_context` runs for a target repository, it merges:
+
+1. **`<MCP_ROOT>/.mcpignore`** — defaults shipped with this repo (secrets, credentials, vendor trees, large build outputs).
+2. **`<repo>/.mcpignore`** — optional; maintain in the repo under audit for org-specific exclusions.
+
+Any path that matches is **never read, never included in the directory tree shown to the LLM, and never sent in the audit context**. Extend these files for your environment; do not rely on the LLM to “ignore” secrets.
+
+For a **manual** deep audit in chat, still avoid pasting secret values—describe locations only.
 
 ## How to Read This Repo
 
@@ -61,7 +74,8 @@ scope: platform | per-repo
 
 The root is a clean, forkable template. Data from a real run lives in `examples/astral-sh/`.
 
-- `scripts/` and `prompts/` are the engine — they stay at root
+- `scripts/` and `prompts/` are the engine — they stay at root (including `prompts/deep-audit.md` for human-led audits)
+- `.mcpignore` at the MCP root defines default exclusions for automated context gathering
 - `audits/`, `maps/`, `feedback/`, `diagrams/`, `reports/` are empty templates at root
 - `examples/astral-sh/` contains populated data from a proof-of-concept run
 

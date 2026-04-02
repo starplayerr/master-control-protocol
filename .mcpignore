@@ -1,0 +1,26 @@
+# Master Control Protocol — paths never read, sent to an LLM, or included in audit context.
+# Gitignore-style patterns (gitwildmatch). See AGENTS.md / CLAUDE.md.
+# Merged with optional .mcpignore at the root of the repo being audited.
+
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.secret
+**/secrets/
+**/credentials/
+**/vault/
+
+# Sensitive config (broad — tune per org)
+**/*secret*
+**/*credential*
+**/*password*
+**/*token*
+
+# Large binary / vendor / generated (token waste)
+**/node_modules/
+**/vendor/
+**/.terraform/
+**/dist/
+**/build/

@@ -59,6 +59,8 @@ For a single repo:
 python scripts/audit.py --repo https://github.com/org/repo-name
 ```
 
+Automated audits use `prompts/default.md` (and type-specific prompts). For a **deep manual audit** with a human plus a high-context model, use [prompts/deep-audit.md](prompts/deep-audit.md). Context gathering respects [.mcpignore](.mcpignore) (plus optional `.mcpignore` in the repo under audit) so matching paths are never sent to the LLM.
+
 ## Repo Structure
 
 ```
@@ -66,6 +68,7 @@ master-control-protocol/
 │
 ├── README.md                         This file
 ├── AGENTS.md                         Agent orientation and rules
+├── .mcpignore                        Paths excluded from audit LLM context (gitignore-style)
 ├── mcp-manifest.json                 Structure, read order, file registry
 ├── INVENTORY.md                      Repo catalog (empty template)
 ├── PRIORITY_CLONES.md                Audit queue (empty template)
@@ -86,8 +89,9 @@ master-control-protocol/
 │
 ├── feedback/                         Compounding feedback loop (empty)
 │
-├── prompts/                          Type-specific audit prompt templates
-│   ├── default.md
+├── prompts/                          Audit prompt templates
+│   ├── default.md                    Automated pipeline (and type-specific prompts below)
+│   ├── deep-audit.md                 Deep manual audit (human + high-context LLM)
 │   ├── infrastructure.md
 │   ├── library.md
 │   ├── service.md
