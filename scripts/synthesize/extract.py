@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tempfile
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 
@@ -76,56 +77,145 @@ class AuditFacts:
     known_gaps: list[str] = field(default_factory=list)
 
 
+# ── Normalisation ────────────────────────────────────────────────────────────
+
+
+def _normalize_cell(s: str) -> str:
+    """Strip whitespace and outer **bold** markers from table cells."""
+    if not s:
+        return ""
+    t = s.strip()
+    while len(t) >= 4 and t.startswith("**") and t.endswith("**"):
+        t = t[2:-2].strip()
+    return t
+
+
+# ── Section title aliases (must match ## heading text after strip) ───────────
+
+# Order matters: first match wins.
+_SECTION_IDENTITY = (
+    "Identity",
+    "Repository identity",
+    "Repository Identity",
+)
+_SECTION_TECH = ("Tech Stack", "Technology stack", "Tech stack")
+_SECTION_PACKAGE = ("Package Details", "Package details")
+_SECTION_DEPLOYMENT = ("Deployment",)
+
+_SECTION_ARTIFACTS = ("Artifacts Produced", "Artifacts", "Build artifacts")
+_SECTION_OUTBOUND = (
+    "Outbound (what this repo depends on)",
+    "Outbound dependencies",
+    "Dependencies (outbound)",
+    "Dependencies",
+)
+_SECTION_INBOUND = (
+    "Inbound (what depends on this repo)",
+    "Inbound dependencies",
+    "Dependents",
+)
+_SECTION_CONFIG = (
+    "Config / Sources of Truth",
+    "Configuration",
+    "Config / Source of Truth",
+    "Sources of Truth",
+    "Config",
+)
+_SECTION_API = ("API Surface", "API surface", "APIs")
+_SECTION_SECRETS = (
+    "Secrets and Auth",
+    "Secrets & Auth",
+    "Secrets",
+    "Secrets and authentication",
+)
+
+
+def _rows_for_section(
+    section_tables: dict[str, list[dict]], titles: tuple[str, ...]
+) -> list[dict]:
+    """Return rows from the first section whose heading is in titles."""
+    for title in titles:
+        if title in section_tables:
+            return section_tables[title]
+    return []
+
+
 # ── Key-value table extraction ───────────────────────────────────────────────
 
-# These sections use a two-column Field | Value layout
-_KV_SECTIONS = {"Identity", "Tech Stack", "Package Details", "Deployment"}
-
+# Field label -> AuditFacts attribute (Identity, Tech, Package, Deployment).
+# Includes alternate wordings / v1-style labels for the same semantic field.
 _IDENTITY_MAP = {
     "Repo name": "repo_name",
+    "Repository": "repo_name",
     "GitHub URL": "github_url",
+    "Repo": "github_url",
+    "URL": "github_url",
     "Owner(s)": "owners",
+    "Owners": "owners",
     "Prod status": "prod_status",
+    "Production status": "prod_status",
     "Purpose": "purpose",
 }
 
 _TECH_MAP = {
     "Language(s)": "languages",
+    "Languages": "languages",
     "Framework(s)": "frameworks",
+    "Frameworks": "frameworks",
     "Build tool(s)": "build_tools",
+    "Build tools": "build_tools",
     "Runtime": "runtime",
 }
 
 _PKG_MAP = {
     "Package name": "name",
+    "Name": "name",
     "Registry": "registry",
     "Current version": "version",
+    "Version": "version",
     "Version strategy": "version_strategy",
     "Known consumers": "consumers",
+    "Consumers": "consumers",
     "Breaking change policy": "breaking_change_policy",
 }
 
 _DEPLOY_MAP = {
     "CI system": "ci",
+    "CI": "ci",
     "CD system": "cd",
+    "CD": "cd",
     "Target environment(s)": "targets",
+    "Targets": "targets",
     "Pipeline file(s)": "pipeline_files",
+    "Pipeline files": "pipeline_files",
 }
 
 
-def _extract_kv(rows: list[dict], mapping: dict) -> dict:
-    """Extract values from a Field|Value table using a mapping."""
-    result = {}
+def _extract_kv(rows: list[dict], mapping: dict[str, str]) -> dict:
+    """Extract values from a Field|Value or Dimension|Value table."""
+    result: dict = {}
     for row in rows:
-        field_name = row.get("Field", "")
-        value = row.get("Value", "")
-        attr = mapping.get(field_name)
+        label = _normalize_cell(row.get("Field") or row.get("Dimension") or "")
+        value = _normalize_cell(
+            row.get("Value")
+            or row.get("Details")
+            or row.get("Description")
+            or row.get("Current value")
+            or ""
+        )
+        attr = mapping.get(label)
         if attr:
             result[attr] = value
     return result
 
 
-# ── List-section extraction ──────────────────────────────────────────────────
+def _row_pick(row: dict, *keys: str) -> str:
+    """First non-empty normalized cell among alternate column names."""
+    for k in keys:
+        v = _normalize_cell(row.get(k, ""))
+        if v:
+            return v
+    return ""
 
 
 def _extract_known_gaps(lines: list[str]) -> list[str]:
@@ -140,8 +230,36 @@ def _extract_known_gaps(lines: list[str]) -> list[str]:
         if in_section and stripped.startswith("## "):
             break
         if in_section and stripped.startswith("- "):
-            gaps.append(stripped[2:].strip())
+            gaps.append(_normalize_cell(stripped[2:]))
     return gaps
+
+
+def _extract_purpose_prose(lines: list[str], max_chars: int = 500) -> str:
+    """If Identity has no Purpose row, use a short prose paragraph under ## Identity."""
+    in_identity = False
+    parts: list[str] = []
+    for line in lines:
+        s = line.strip()
+        if s.startswith("## "):
+            if in_identity:
+                break
+            if s == "## Identity" or s.startswith("## Identity "):
+                in_identity = True
+            continue
+        if not in_identity:
+            continue
+        if s.startswith("|"):
+            continue
+        if s.startswith("#"):
+            break
+        if s.startswith("- ") or s.startswith("* "):
+            continue
+        if s:
+            parts.append(s)
+    text = " ".join(parts).strip()
+    if not text or len(text) > max_chars:
+        return ""
+    return text
 
 
 # ── Audit-meta HTML comment extraction ───────────────────────────────────────
@@ -173,8 +291,13 @@ def extract_facts(audit_path: Path) -> AuditFacts:
     lines = text.splitlines()
     tables = parse_md_tables_from_lines(lines)
 
+    try:
+        source_rel = str(audit_path.relative_to(config.MCP_ROOT))
+    except ValueError:
+        source_rel = str(audit_path)
+
     facts = AuditFacts(
-        source_file=str(audit_path.relative_to(config.MCP_ROOT)),
+        source_file=source_rel,
         last_updated=str(post.metadata.get("last_updated", "")),
     )
 
@@ -182,71 +305,131 @@ def extract_facts(audit_path: Path) -> AuditFacts:
     for t in tables:
         section_tables.setdefault(t["section"], []).extend(t["rows"])
 
-    # Key-value sections
-    if "Identity" in section_tables:
-        facts.identity = Identity(**_extract_kv(section_tables["Identity"], _IDENTITY_MAP))
-    if "Tech Stack" in section_tables:
-        facts.tech_stack = TechStack(**_extract_kv(section_tables["Tech Stack"], _TECH_MAP))
-    if "Package Details" in section_tables:
-        facts.package = PackageInfo(**_extract_kv(section_tables["Package Details"], _PKG_MAP))
-    if "Deployment" in section_tables:
-        facts.deployment = Deployment(**_extract_kv(section_tables["Deployment"], _DEPLOY_MAP))
+    # Key-value sections (first matching section title)
+    id_rows = _rows_for_section(section_tables, _SECTION_IDENTITY)
+    if id_rows:
+        facts.identity = Identity(**_extract_kv(id_rows, _IDENTITY_MAP))
+
+    tech_rows = _rows_for_section(section_tables, _SECTION_TECH)
+    if tech_rows:
+        facts.tech_stack = TechStack(**_extract_kv(tech_rows, _TECH_MAP))
+
+    pkg_rows = _rows_for_section(section_tables, _SECTION_PACKAGE)
+    if pkg_rows:
+        facts.package = PackageInfo(**_extract_kv(pkg_rows, _PKG_MAP))
+
+    dep_rows = _rows_for_section(section_tables, _SECTION_DEPLOYMENT)
+    if dep_rows:
+        facts.deployment = Deployment(**_extract_kv(dep_rows, _DEPLOY_MAP))
+
+    # Fallbacks: repo name from filename; purpose from prose under Identity
+    if not facts.identity.repo_name:
+        facts.identity.repo_name = audit_path.stem
+    if not facts.identity.purpose:
+        prose = _extract_purpose_prose(lines)
+        if prose:
+            facts.identity.purpose = prose
 
     # Row-list sections
     for t in tables:
         sec = t["section"]
-        if sec == "Artifacts Produced":
-            for row in t["rows"]:
-                facts.artifacts.append({
-                    "name": row.get("Artifact", ""),
-                    "type": row.get("Type", ""),
-                    "registry": row.get("Registry", ""),
-                    "destination": row.get("Destination", ""),
-                })
-        elif sec == "Outbound (what this repo depends on)":
-            for row in t["rows"]:
-                facts.outbound_deps.append({
-                    "dependency": row.get("Dependency", ""),
-                    "type": row.get("Type", ""),
-                    "notes": row.get("Notes", ""),
-                })
-        elif sec == "Inbound (what depends on this repo)":
-            for row in t["rows"]:
-                facts.inbound_deps.append({
-                    "consumer": row.get("Consumer", ""),
-                    "type": row.get("Type", ""),
-                    "notes": row.get("Notes", ""),
-                })
-        elif sec == "Config / Sources of Truth":
-            for row in t["rows"]:
-                facts.configs.append({
-                    "config": row.get("Config", ""),
-                    "source": row.get("Source", ""),
-                    "notes": row.get("Notes", ""),
-                })
-        elif sec == "API Surface":
-            for row in t["rows"]:
-                facts.api_surface.append({
-                    "endpoint": row.get("Endpoint / Interface", ""),
-                    "port": row.get("Port", ""),
-                    "protocol": row.get("Protocol", ""),
-                    "auth": row.get("Auth", ""),
-                    "notes": row.get("Notes", ""),
-                })
-        elif sec == "Secrets and Auth":
-            for row in t["rows"]:
-                facts.secrets.append({
-                    "name": row.get("Secret / Credential", ""),
-                    "source": row.get("Source", ""),
-                    "usage": row.get("Used For", ""),
-                })
+        rows = t["rows"]
+        if sec in _SECTION_ARTIFACTS:
+            for row in rows:
+                facts.artifacts.append(
+                    {
+                        "name": _row_pick(
+                            row, "Artifact", "Name", "Package", "Output"
+                        ),
+                        "type": _row_pick(row, "Type", "Kind"),
+                        "registry": _row_pick(row, "Registry", "Location"),
+                        "destination": _row_pick(
+                            row, "Destination", "Target", "Published to"
+                        ),
+                    }
+                )
+        elif sec in _SECTION_OUTBOUND:
+            for row in rows:
+                facts.outbound_deps.append(
+                    {
+                        "dependency": _row_pick(
+                            row, "Dependency", "Name", "Package", "Resource"
+                        ),
+                        "type": _row_pick(row, "Type", "Kind"),
+                        "notes": _row_pick(row, "Notes", "Note", "Description"),
+                    }
+                )
+        elif sec in _SECTION_INBOUND:
+            for row in rows:
+                facts.inbound_deps.append(
+                    {
+                        "consumer": _row_pick(
+                            row, "Consumer", "Name", "Dependent", "Client"
+                        ),
+                        "type": _row_pick(row, "Type", "Kind"),
+                        "notes": _row_pick(row, "Notes", "Note", "Description"),
+                    }
+                )
+        elif sec in _SECTION_CONFIG:
+            for row in rows:
+                facts.configs.append(
+                    {
+                        "config": _row_pick(
+                            row,
+                            "Config",
+                            "Configuration",
+                            "Key",
+                            "Setting",
+                            "Dimension",
+                        ),
+                        "source": _row_pick(
+                            row, "Source", "Location", "Value", "Where"
+                        ),
+                        "notes": _row_pick(row, "Notes", "Note", "Description"),
+                    }
+                )
+        elif sec in _SECTION_API:
+            for row in rows:
+                facts.api_surface.append(
+                    {
+                        "endpoint": _row_pick(
+                            row,
+                            "Endpoint / Interface",
+                            "Endpoint",
+                            "Interface",
+                            "API",
+                            "Path",
+                        ),
+                        "port": _row_pick(row, "Port"),
+                        "protocol": _row_pick(row, "Protocol"),
+                        "auth": _row_pick(row, "Auth", "Authentication"),
+                        "notes": _row_pick(row, "Notes", "Note", "Description"),
+                    }
+                )
+        elif sec in _SECTION_SECRETS:
+            for row in rows:
+                facts.secrets.append(
+                    {
+                        "name": _row_pick(
+                            row,
+                            "Secret / Credential",
+                            "Secret",
+                            "Credential",
+                            "Name",
+                        ),
+                        "source": _row_pick(row, "Source", "Location"),
+                        "usage": _row_pick(
+                            row, "Used For", "Usage", "Purpose", "Notes"
+                        ),
+                    }
+                )
 
     facts.known_gaps = _extract_known_gaps(lines)
 
     return facts
 
 
-# ── Cache layer ──────────────────────────────────────────────────────────────
+# ── Cache layer ────────────────────────────────────────────────────────────────
 
 
 def _cache_path(repo_name: str) -> Path:
@@ -326,7 +509,59 @@ def load_all_audits(use_cache: bool = True) -> dict[str, AuditFacts]:
     return results
 
 
+def _self_check() -> None:
+    """Minimal regression checks for alternate markdown formats."""
+    sample = """---
+title: "Audit: demo"
+last_updated: 2026-01-01
+---
+## Identity
+
+Short purpose line for testing prose fallback.
+
+| Dimension | Value |
+| --- | --- |
+| **Repo** | https://github.com/org/demo |
+| Owners | **Jane Doe** |
+
+## Dependencies
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| libfoo | library | ok |
+
+## Config
+
+| Key | Source |
+| --- | --- |
+| app.yaml | repo root |
+"""
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".md", delete=False, encoding="utf-8"
+    ) as f:
+        f.write(sample)
+        path = Path(f.name)
+    try:
+        facts = extract_facts(path)
+        assert facts.identity.github_url == "https://github.com/org/demo", (
+            facts.identity.github_url
+        )
+        assert facts.identity.owners == "Jane Doe", facts.identity.owners
+        assert (
+            facts.identity.purpose
+            == "Short purpose line for testing prose fallback."
+        ), facts.identity.purpose
+        assert len(facts.outbound_deps) == 1, facts.outbound_deps
+        assert facts.outbound_deps[0]["dependency"] == "libfoo"
+        assert len(facts.configs) == 1, facts.configs
+        # Repo name from filename when table has no Repo name row
+        assert facts.identity.repo_name == path.stem
+    finally:
+        path.unlink(missing_ok=True)
+
+
 if __name__ == "__main__":
+    _self_check()
     all_facts = load_all_audits(use_cache=False)
     print(f"Extracted facts from {len(all_facts)} audits:\n")
     for name, facts in all_facts.items():

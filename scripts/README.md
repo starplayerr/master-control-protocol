@@ -44,6 +44,8 @@ python scripts/audit.py --local-path /path/to/repo
 
 With `--repo`, MCP clones the repository first. With `--local-path`, MCP audits an existing local git checkout and skips cloning. In both cases it gathers context, auto-selects a prompt, calls the LLM, saves the report to `audits/<repo-name>.md`, updates INVENTORY.md and audit-state.json, then runs automated feedback capture.
 
+**Prompts:** `prompts/default.md` and the type-specific files (`library.md`, `service.md`, …) are for the **automated** pipeline. For a **deep manual audit** with a human plus a high-context model, use [prompts/deep-audit.md](../prompts/deep-audit.md) instead.
+
 Options:
 - `--branch <branch>` — audit a specific branch
 - `--local-path <dir>` — audit an existing local git repository path (alternative to `--repo`)
